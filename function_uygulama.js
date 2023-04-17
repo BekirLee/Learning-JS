@@ -35,17 +35,32 @@
 // yazi_tura();
 // yazi_tura();
 
-function eded(number) {
-    let say = 0;
-    let sayilar=[];
-    for (let i = 1; i <= number; i++) {
-        if (number % i == 0) {
-            say++;
-            sayilar.push(i);
-        }
 
+// function eded(number) {
+//     let say = 0;
+//     let sayilar=[];
+//     for (let i = 1; i <= number; i++) {
+//         if (number % i == 0) {
+//             say++;
+//             sayilar.push(i);
+//         }
+
+//     }
+//     console.log(sayilar);
+// }
+
+// eded(6);
+
+
+function toplam() {
+    let cem = 0;
+    for (let i = 0; i < arguments.length;i++) {
+        cem += arguments[i];
+        
     }
-    console.log(sayilar);
+    console.log(cem);
 }
 
-eded(6);
+toplam(2,3,4);
+toplam(2,3,5,4);
+toplam(2,3,4,6,4);
