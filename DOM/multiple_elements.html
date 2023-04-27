@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>Document</title>
 </head>
 
 <body>
 
 
+
+    <div class="card">
+        <ul class="text-group text-group-flush" id="task-list">
+        </ul>
+    </div>
+    <!-- 
     <ul id="text-list">
         <li class="text">
             task 1
@@ -34,17 +42,43 @@
         </li>
     </ul>
 
+ -->
+
 
 
     <script>
-        let result;
+        // let result;
 
-        result = document.getElementsByClassName("text");
-        result = document.querySelectorAll("#text-list li");
+        // result = document.getElementsByClassName("text");
+        // result = document.querySelectorAll("#text-list li");
 
-        for (let sonuc of result) {
-            sonuc.style.color = "red";
+        let ul = document.getElementById("task-list");
+        let tasks = [
+            { "id": 1, "name": "task1" },
+            { "id": 2, "name": "task2" },
+            { "id": 3, "name": "task3" },
+            { "id": 4, "name": "task4" }
 
+        ]
+
+
+
+
+
+
+
+        for (let sonuc of tasks) {
+
+            let li = `
+                <li class="task list-group-item">
+                    <div class="form-check">  
+                        <label for="${sonuc.id}" class="form-check-label">${sonuc.name}</label>
+                        <input type="checkbox" class="form-check-input" id="${sonuc.id}">
+                      
+                    </div>
+                    </li>`;
+
+            ul.insertAdjacentHTML("beforeend", li);
         }
 
     </script>
