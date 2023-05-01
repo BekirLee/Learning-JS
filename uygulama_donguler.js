@@ -7,7 +7,7 @@ let numbers = [1, 3, 4, 6, 5, 7, 2, 12, 2, 5, 4];
 
 // for (let i of numbers){
 //     if(i%5==0){
-//         console.log(i);
+//         console.log("number id:",i);
 //     }
 // }
 
