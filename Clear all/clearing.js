@@ -9,7 +9,7 @@ let tasks = [
 
 let editid;
 let istaskupdate = false;
-const clear=document.querySelector("#")
+const clear = document.querySelector("#btnclear")
 
 const taskinput = document.querySelector("#password");
 displaytask();
@@ -110,4 +110,7 @@ function updateTask(taskId, taskName) {
     taskinput.classList.add("active");
 }
 
-function clear 
+clear.addEventListener("click",function(){
+    tasks.splice(0,tasks.length);
+    displaytask();
+})
