@@ -17,22 +17,23 @@ function displaytask() {
     for (let result of tasks) {
 
         let li = `
-                <li class="task list-group-item">
+                <li class="task list-group-item d-flex justify-content-between">
                     <div class="form-control">
-                        <input class="form-check-input" id="${result.id}">
+                        <input type="checkbox" class="form-check-input" id="${result.id}">
                         <label for="${result.id}" class="form-check-label">${result.name}</label>
                     </div>
+                    <div class="dropdown ">
+                    <a class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-ellipsis"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a onclick="deleteTask(${result.id})" class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Del</a></li>
+                    <li><a  class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Add</a></li>
+                    </ul>
+                    </div>
                     </li>
-                    <div class="dropdown">
-                        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-ellipsis"></i>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a onclick="deleteTask(${result.id})" class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Del</a></li>
-                        <li><a  class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Add</a></li>
-                        </ul>
-                        </div>`;
-
+                   `;
+                    
         ul.insertAdjacentHTML("beforeend", li);
 
     }
@@ -49,7 +50,7 @@ function newtask(event) {
     }
     else {
         tasks.push({ "id": tasks.length + 1, "name": taskinput.value })
-        taskinput.value = "";   
+        taskinput.value = "";
         displaytask();
 
     }

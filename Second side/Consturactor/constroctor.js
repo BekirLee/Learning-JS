@@ -4,7 +4,7 @@ function Answer(text, options, right_answer) {
     this.options = options;
     this.right_answer = right_answer;
     this.control = function (answer) {
-        return answer === this.right_answer;
+        return answer == this.right_answer;
     }
 
 }

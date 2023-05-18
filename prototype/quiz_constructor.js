@@ -1,5 +1,6 @@
+function Question(text, options, right_answer) {
 
-function Answer(text, options, right_answer) {
+
     this.text = text;
     this.options = options;
     this.right_answer = right_answer;
@@ -8,35 +9,39 @@ function Answer(text, options, right_answer) {
     }
 
 }
+
+
+
 let questions = [
-    new Answer("Which is program language", { a: "python", b: "java", c: "C", }, "c"),
+    new Question("Which is program language", { a: "python", b: "java", c: "C", }, "c"),
 
 
-    new Answer("Which is program language", { a: "python", b: "java", c: "C", }, "c"),
+    new Question("Which is program language", { a: "python", b: "java", c: "C", }, "c"),
 
 
-    new Answer("Which is program language", { a: "python", b: "java", c: "C", }, "c"),
+    new Question("Which is program language", { a: "python", b: "java", c: "C", }, "c"),
 
 
 ]
 
+// /0,undefined,null,'',"", -- false  ////// [],{}
+
+
 function Quiz(questions) {
     this.questions = questions;
     this.questionIndex=0;
-
-
-}
-Quiz.prototype.bring = function() {
-    return this.questions[this.questionIndex];
 }
 
+Quiz.prototype.bring = returnQuiz(questions)
 
-const quiz = Quiz(questions);
-
-
-document.querySelector(".btn-start").addEventListener("click", function () {
-
-    console.log(quiz.bring());
-    quiz.questionIndex += 1;
+ const quiz =  Quiz.prototype.bring ;
+ document.querySelector(".btn-start").addEventListener("click", function () {
+ console.log(quiz.options)
+ console.log(quiz.control('c'))
 
 })
+
+
+function returnQuiz(questions) {
+    return questions[0];
+}
