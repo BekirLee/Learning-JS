@@ -29,15 +29,16 @@ let questions = [
 
 function Quiz(questions) {
     this.questions = questions;
-    this.questionIndex=0;
+    this.questionIndex = 0;
 }
 
 Quiz.prototype.bring = returnQuiz(questions)
 
- const quiz =  Quiz.prototype.bring ;
- document.querySelector(".btn-start").addEventListener("click", function () {
- console.log(quiz.options)
- console.log(quiz.control('c'))
+const quiz = Quiz.prototype.bring;
+document.querySelector(".btn-start").addEventListener("click", function () {
+    document.querySelector(".quiz-box").classList.add("active");
+    console.log(quiz.options)
+    console.log(quiz.control('c'))
 
 })
 

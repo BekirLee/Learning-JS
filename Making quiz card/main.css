@@ -1,6 +1,56 @@
-.btn-start{
-    position: absolute;
+.btn-start,
+.quiz-box {
+    position: absolute !important;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+}
+
+.quiz-box {
+    width: 550px;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1.8s ease;
+    transform: translate(-50%, -50%)scale(1);
+}
+
+.quiz-box.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.head .title {
+    margin-left: 20px;
+}
+
+.option-list .option .inner_option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.option {
+    padding: 4px;
+    margin-bottom: 10px;
+    border: solid 1px rgb(244, 236, 236);
+    border-radius: 12px;
+}
+
+.option.correct:hover {
+    color: rgb(126, 126, 229);
+    background-color: greenyellow;
+}
+
+.option.incorrect:hover {
+    color: rgb(126, 126, 229);
+    background-color: red;
+}
+
+.inner_option {
+    padding: 3px;
+}
+
+.card-body .question {
+    margin-bottom: 10px;
 }
