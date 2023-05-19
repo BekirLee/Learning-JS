@@ -1,4 +1,4 @@
-function Question(id,text, options, right_answer) {
+function Question(id, text, options, right_answer) {
 
     this.id = id;
     this.text = text;
@@ -13,10 +13,10 @@ function Question(id,text, options, right_answer) {
 
 
 let questions = [
-    new Question(1, "Which is program language", { a: "python", b: "java", c: "C", }, "c"),
+    new Question(1, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript" }, "d"),
 
 
-  
+
 ]
 
 bring_quiz();
@@ -47,7 +47,7 @@ function returnQuiz(questions) {
 function bring_quiz() {
     let bringer = document.getElementById("quizes")
 
-    for (taken_question of questions) {
+    for (let question of questions) {
         let quiz = `
         <header>
         <div class="head">
@@ -55,40 +55,41 @@ function bring_quiz() {
         </div>
          </header>
 
-    <section id="${taken_question.id}" class="card-body">
-        <div class="question">${taken_question.text}</div>
+    <section id="${question.id}" class="card-body">
+        <div class="question">${question.text}</div>
         <div class="option-list">
-            <div class="option  correct">
+            <div class="option   ${question.right_answer == 'a' ? 'correct' : 'incorrect'}">
                 <div class="inner_option">
-                    <span>${taken_question.options} </span>
-                    <div class="icon"> <i class="fas fa-check"></i></div>
+                    <span>${question.options.a} </span>
+                    <div class="icon"> <i class="fas ${question.right_answer == 'a' ? 'fa-check' : 'fa-times'}"></i></div>
+                </div>
+               
+
+            </div>
+
+            <div class="option  ${question.right_answer == 'b' ? 'correct' : 'incorrect'}">
+                <div class="inner_option">
+                    <span>${question.options.b}</span>
+                    <div class="icon"> <i class="fas ${question.right_answer == 'b' ? 'fa-check' : 'fa-times'}"></i></div>
                 </div>
 
             </div>
 
-            <div class="option incorrect">
+            <div class="option   ${question.right_answer == 'c' ? 'correct' : 'incorrect'}">
                 <div class="inner_option">
-                    <span>${taken_question.options}</span>
-                    <div class="icon"> <i class="fas fa-times"></i></div>
+                    <span>${question.options.c}</span>
+                    <div class="icon"> <i class="fas  ${question.right_answer == 'c' ? 'fa-check' : 'fa-times'}"></i></div>
                 </div>
-
             </div>
-
-            <div class="option  incorrect">
-                <div class="inner_option">
-                    <span>${taken_question.options}</span>
-                    <div class="icon"> <i class="fas fa-times"></i></div>
-                </div>
-
+            <div class="option  ${question.right_answer == 'd' ? 'correct' : 'incorrect'}">
+            <div class="inner_option">
+                <span>${question.options.d}</span>
+                <div class="icon"> <i class="fas  ${question.right_answer == 'd' ? 'fa-check' : 'incorrect'}"></i></div>
             </div>
+        </div>
 
-            <div class="option  incorrect">
-                <div class="inner_option">
-                    <span> ${taken_question.options}</span>
-                    <div class="icon"> <i class="fas fa-times"></i></div>
-                </div>
+        </div>
 
-            </div>
         </div>
      </section> `;
         bringer.insertAdjacentHTML("beforeend", quiz);

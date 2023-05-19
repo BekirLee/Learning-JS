@@ -33,17 +33,18 @@
 .option {
     padding: 4px;
     margin-bottom: 10px;
+    cursor: pointer;
     border: solid 1px rgb(244, 236, 236);
     border-radius: 12px;
 }
 
 .option.correct:hover {
-    color: rgb(126, 126, 229);
+    color: #fff;
     background-color: greenyellow;
 }
 
 .option.incorrect:hover {
-    color: rgb(126, 126, 229);
+    color: #fff;
     background-color: red;
 }
 
