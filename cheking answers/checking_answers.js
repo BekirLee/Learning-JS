@@ -88,39 +88,30 @@ function bring_quiz() {
             </div>
 
             <div class="option   ${question.right_answer == 'd' ? 'correct' : 'incorrect'}">
-               <div class="inner_option">
+               <div class="inner_option">   
                     <span>${question.options.d}</span>
                     <div class="icon"> <i class="fas  ${question.right_answer == 'd' ? 'fa-check' : 'fa-times'}"></i></div>
                 </div>
              </div>
 
-
-
-
-         
-
-
-
         </div>
 
-
-
      </section>
-
-
-
-
        `;
+        for (let i = 0; i < question.options.children.length; i++) {
+            question.options.children[i].classList.add("disabled");
+        }
+
 
 
         bringer.insertAdjacentHTML("beforeend", quiz);
+
 
     }
 
 
 
 }
-
 
 
 
