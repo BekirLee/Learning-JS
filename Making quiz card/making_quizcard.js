@@ -13,14 +13,15 @@ function Question(id, text, options, right_answer) {
 
 
 let questions = [
-    new Question(1, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript" }, "d"),
-    // new Question(2, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript" }, "d"),
+    new Question(1, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript", e: "Javascript" }, "d"),
+    // new Question(2, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript"}, "d"),
     // new Question(3, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript" }, "d"),
     // new Question(4, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript" }, "d"),
 
 ]
 
 bring_quiz();
+
 
 // /0,undefined,null,'',"", -- false  ////// [],{}
 
@@ -46,7 +47,11 @@ function returnQuiz(questions) {
 }
 
 function bring_quiz() {
-    let bringer = document.getElementById("quizes")
+    let bringer = document.getElementById("quizes");
+
+    // let title = `<span>${questions.text}</span>`;
+    // let options = '';
+
 
     for (let question of questions) {
         let quiz = `
@@ -59,7 +64,7 @@ function bring_quiz() {
     <section id="${question.id}" class="card-body">
         <div class="question">${question.text}</div>
         <div class="option-list">
-    
+
 
             <div class="option  ${question.right_answer == 'a' ? 'correct' : 'incorrect'}">
                 <div class="inner_option">
@@ -68,7 +73,6 @@ function bring_quiz() {
                 </div>
 
             </div>
-
             <div class="option   ${question.right_answer == 'b' ? 'correct' : 'incorrect'}">
                 <div class="inner_option">
                     <span>${question.options.b}</span>
@@ -90,13 +94,51 @@ function bring_quiz() {
                 </div>
              </div>
 
-            
-           
+
+
+
+         
+
+
+
         </div>
 
 
-       
-     </section> `;
+
+     </section>
+
+
+
+
+       `;
+
+
         bringer.insertAdjacentHTML("beforeend", quiz);
+
     }
+
+
+
 }
+
+
+
+
+    // function bring_test() {
+    //     let title = `<span>${questions.text}</span>`;
+    //     let options = '';
+
+        // for (let answer in questions.options) {
+        //     options +=
+        //         ` <div class="option incorrect">
+        //                <div class="inner_option">
+        //                   <span><b>${answer}</b>: ${questions.right_answer[answer]}</span>
+        //                </div>
+        //           </div>
+
+        //         `;
+        // }
+
+
+
+    // }
