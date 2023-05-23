@@ -55,3 +55,7 @@
 .card-body .question {
     margin-bottom: 10px;
 }
+
+.disabled {
+   pointer-events: none;
+}

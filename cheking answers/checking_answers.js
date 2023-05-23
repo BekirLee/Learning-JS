@@ -1,26 +1,50 @@
-function Question(id, text, options, right_answer) {
+// function Question(id, text, options, right_answer) {
 
-    this.id = id;
-    this.text = text;
-    this.options = options;
-    this.right_answer = right_answer;
-    this.control = function (answer) {
-        return answer === this.right_answer;
-    }
+//     this.id = id;
+//     this.text = text;
+//     this.options = options;
+//     this.right_answer = right_answer;
+//     this.control = function (answer) {
+//         return answer === this.right_answer;
+//     }
 
-}
+// }
 
 
 
+// let questions = [
+//     new Question(1, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript", e: "Javascript" }, "d"),
+//     // new Question(2, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript"}, "d"),
+//     // new Question(3, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript" }, "d"),
+//     // new Question(4, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript" }, "d"),
+
+// ]
 let questions = [
-    new Question(1, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript", e: "Javascript" }, "d"),
-    // new Question(2, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript"}, "d"),
-    // new Question(3, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript" }, "d"),
-    // new Question(4, "Which is program language", { a: "C#", b: "java", c: "C", d: "Javascript" }, "d"),
+    {
+        id: 1,
+        text: "Which is program language",
+        options: { a: "C#", b: "java", c: "C", d: "Javascript", e: "Javascript" },
+        right_answer: "d",
+    },
+    // {
+    //     id: 2,
+    //     text: "Which is program language",
+    //     options: { a: "C#", b: "java", c: "C", d: "Javascript", e: "Javascript" },
+    //     right_answer:"d",
+    // },
+    // {
+    //     id: 3,
+    //     text: "Which is program language",
+    //     options: { a: "C#", b: "java", c: "C", d: "Javascript", e: "Javascript" },
+    //     right_answer:"d",
+    // },
+
 
 ]
 
+
 bring_quiz();
+// check();
 
 
 // /0,undefined,null,'',"", -- false  ////// [],{}
@@ -31,20 +55,16 @@ function Quiz(questions) {
     this.questionIndex = 0;
 }
 
-Quiz.prototype.bring = returnQuiz(questions)
+// Quiz.prototype.bring = returnQuiz(questions);
 
 const quiz = Quiz.prototype.bring;
 document.querySelector(".btn-start").addEventListener("click", function () {
     document.querySelector(".quiz-box").classList.add("active");
-    console.log(quiz.options)
-    console.log(quiz.control('c'))
 
 })
 
 
-function returnQuiz(questions) {
-    return questions[0];
-}
+
 
 function bring_quiz() {
     let bringer = document.getElementById("quizes");
@@ -98,20 +118,26 @@ function bring_quiz() {
 
      </section>
        `;
-        for (let i = 0; i < question.options.children.length; i++) {
-            question.options.children[i].classList.add("disabled");
-        }
-
-
 
         bringer.insertAdjacentHTML("beforeend", quiz);
 
+        let option = document.querySelector(".option");
+
+        for (i = 0; i < 2; i++) {
+            option.addEventListener("click", function () {
+                option.classList.add("disabled");
+
+
+            });
+        }
 
     }
-
-
-
 }
+
+    
+
+
+
 
 
 
