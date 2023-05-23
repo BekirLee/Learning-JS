@@ -66,6 +66,8 @@ document.querySelector(".btn-start").addEventListener("click", function () {
 
 
 
+
+
 function bring_quiz() {
     let bringer = document.getElementById("quizes");
 
@@ -134,7 +136,7 @@ function bring_quiz() {
     }
 }
 
-    
+
 
 
 
