@@ -38,15 +38,15 @@
     border-radius: 12px;
 }
 
-.option.correct:hover {
+.option:hover {
     color: #fff;
-    background-color: greenyellow;
+    background-color: rgb(229, 178, 10);
 }
 
-.option.incorrect:hover {
+/* .option.incorrect:hover {
     color: #fff;
     background-color: red;
-}
+} */
 
 .inner_option {
     padding: 3px;

@@ -33,7 +33,7 @@ function bring_quiz() {
         for (let option in question.options) {
 
             optionsHTML += `    
-                <div class="option ${question.right_answer == option ? 'correct' : 'incorrect'}">
+                <div class="option">
                     <div class="inner_option">
                         <span>${question.options[option]}</span>
                         <div class="icon">
@@ -68,9 +68,29 @@ function bring_quiz() {
             }
         });
     });
+    
+    // clickledikde correct or oncorrect clasi elve etmek
+    let true_var = right_answer;
+    let answers = document.querySelectorAll('.option');
+    answers.forEach(answer => {
+        answer.addEventListener("click", function () {
+            if (options == true_var) {
+                answers.classList.add("correct");
+            }
+            else {
+                answers.classList.add("incorrect");
+            }
+        })
+
+    })
 }
 
 document.querySelector(".btn-start").addEventListener("click", function () {
     document.querySelector(".btn-start").style.display = "none"; // Start düyməsini gizlədər
     bring_quiz();
 });
+
+
+
+
+// ${question.right_answer == option ? 'correct' : 'incorrect'}
