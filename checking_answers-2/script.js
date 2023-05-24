@@ -86,3 +86,4 @@ button.addEventListener("click", function () {
     button.style.display = "none"; // Start düyməsini gizlədər
     bring_quiz();
 });
+
