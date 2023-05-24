@@ -3,7 +3,7 @@ let questions = [
         id: 1,
         type: "Quiz",
         text: "Which programming language is JavaScript?",
-        options: { a: "C#", b: "Java", c: "C", d: "JavaScript", e: "JavaScript" },
+        options: { a: "C#", b: "Java", c: "C", d: "JavaScript" },
         right_answer: "d",
     },
     // {
@@ -26,18 +26,18 @@ let questions = [
 function bring_quiz() {
     let bringer = document.getElementById("quizes");
 
-    for (let question of questions) {
+    for (question of questions) {
 
         let optionsHTML = "";
 
         for (let option in question.options) {
 
             optionsHTML += `    
-                <div class="option">
+                <div class="option" data-value="${option}">
                     <div class="inner_option">
                         <span>${question.options[option]}</span>
                         <div class="icon">
-                            <i class="fas ${question.right_answer == option ? 'fa-check' : 'fa-times'}"></i>
+                            <i class="fas"></i>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,6 @@ function bring_quiz() {
         bringer.insertAdjacentHTML("beforeend", quizHTML);
     }
 
-    // Variant seçildikdən sonra onları deaktiv edək
     let options = document.querySelectorAll('.option');
     options.forEach(option => {
         option.addEventListener('click', function () {
@@ -65,32 +64,25 @@ function bring_quiz() {
                 option.classList.add('disabled');
                 let otherOptions = Array.from(options).filter(opt => opt !== option);
                 otherOptions.forEach(opt => opt.classList.add('disabled'));
+
+                let icon = option.querySelector(".icon i");
+                if (option.dataset.value === question.right_answer) {
+                    option.classList.add("correct");
+                    icon.classList.add("fa-check");
+                } else {
+                    option.classList.add("incorrect");
+                    icon.classList.add("fa-times");
+                }
             }
         });
     });
-    
-    // clickledikde correct or oncorrect clasi elve etmek
-    let true_var = right_answer;
-    let answers = document.querySelectorAll('.option');
-    answers.forEach(answer => {
-        answer.addEventListener("click", function () {
-            if (options == true_var) {
-                answers.classList.add("correct");
-            }
-            else {
-                answers.classList.add("incorrect");
-            }
-        })
-
-    })
 }
 
-document.querySelector(".btn-start").addEventListener("click", function () {
-    document.querySelector(".btn-start").style.display = "none"; // Start düyməsini gizlədər
+
+
+let button = document.querySelector(".btn-start.first");
+
+button.addEventListener("click", function () {
+    button.style.display = "none"; // Start düyməsini gizlədər
     bring_quiz();
 });
-
-
-
-
-// ${question.right_answer == option ? 'correct' : 'incorrect'}

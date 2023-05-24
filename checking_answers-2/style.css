@@ -1,4 +1,4 @@
-.btn-start,
+.btn-start.first,
 .quiz-box {
     position: absolute !important;
     top: 50%;
@@ -57,5 +57,13 @@
 }
 
 .disabled {
-   pointer-events: none;
+    pointer-events: none;
+}
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
 }
