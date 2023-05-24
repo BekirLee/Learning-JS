@@ -26,20 +26,7 @@ let questions = [
         options: { a: "C#", b: "java", c: "C", d: "Javascript", e: "Javascript" },
         right_answer: "d",
     },
-    // {
-    //     id: 2,
-    //     text: "Which is program language",
-    //     options: { a: "C#", b: "java", c: "C", d: "Javascript", e: "Javascript" },
-    //     right_answer:"d",
-    // },
-    // {
-    //     id: 3,
-    //     text: "Which is program language",
-    //     options: { a: "C#", b: "java", c: "C", d: "Javascript", e: "Javascript" },
-    //     right_answer:"d",
-    // },
-
-
+   
 ]
 
 
