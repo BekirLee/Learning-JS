@@ -8,14 +8,14 @@ let questions = [
     },
     // {
     //     id: 2,
-    // type:"Quiz",
+    //     type: "Quiz",
     //     text: "Which programming language is Python?",
     //     options: { a: "C#", b: "Java", c: "C", d: "Python" },
     //     right_answer: "d",
     // },
     // {
     //     id: 3,
-    // type:"Quiz",
+    //     type: "Quiz",
     //     text: "Which programming language is Ruby?",
     //     options: { a: "Ruby", b: "Java", c: "C", d: "JavaScript" },
     //     right_answer: "a",
@@ -80,7 +80,7 @@ function bring_quiz() {
 
 
 
-let button = document.querySelector(".btn-start.first");
+let button = document.querySelector(".btn-start.main");
 
 button.addEventListener("click", function () {
     button.style.display = "none"; // Start düyməsini gizlədər
