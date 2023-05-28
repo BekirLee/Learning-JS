@@ -31,7 +31,7 @@ var question;
 
 let button = document.querySelector(".btn-start.main");
 
-var startQuestionIndex=0;
+var startQuestionIndex = 0;
 button.addEventListener("click", function () {
     // timer
     startTimer(1);
@@ -45,12 +45,12 @@ let nextButton = document.querySelector(".next");
 
 
 nextButton.addEventListener("click", function () {
-    bringer.innerHTML='';
+    bringer.innerHTML = '';
     startQuestionIndex++;
     // timer
     startTimer(1);
     bring_quiz(startQuestionIndex);
-  
+
 });
 
 
@@ -59,11 +59,11 @@ function bring_quiz(id) {
 
     question = questions[id];
 
-        let optionsHTML = "";
+    let optionsHTML = "";
 
-        for (let option in question.options) {
+    for (let option in question.options) {
 
-            optionsHTML += `    
+        optionsHTML += `    
                 <div class="option" data-value="${option}">
                     <div class="inner_option">
                         <span>${question.options[option]}</span>
@@ -73,9 +73,11 @@ function bring_quiz(id) {
                     </div>
                 </div>
             `;
-        }
 
-        let quizHTML = `  <div class="header">
+    }
+
+
+    let quizHTML = `  <div class="header">
              <div class="title_text"><span>Begin Quiz</span></div>
             <div class="timer">
                 <div class="time_next">Remaining time:</div>
@@ -84,31 +86,33 @@ function bring_quiz(id) {
             </div>
             <section id="${question.id}" class="card-body">
                 <div class="question">${question.text}</div>
+
                 <div class="option-list">
+
                     ${optionsHTML}
                 </div>
             </section>
         `;
 
-        bringer.insertAdjacentHTML("beforeend", quizHTML);
+    bringer.insertAdjacentHTML("beforeend", quizHTML);
 
     let options = document.querySelectorAll('.option');
     options.forEach(option => {
 
         option.addEventListener('click', function () {
 
-            option.classList.toggle ('disabled');
+            option.classList.toggle('disabled');
 
             if (!option.classList.contains('disabled')) {
 
-                
+
                 let otherOptions = Array.from(options).filter(opt => opt !== option);
                 otherOptions.forEach(opt => opt.classList.add('disabled'));
 
                 let icon = option.querySelector(".icon i");
                 if (option.dataset.value === question.right_answer) {
                     option.classList.add("correct");
-      
+
                     icon.classList.add("fa-check");
                 } else {
                     option.classList.add("incorrect");
@@ -132,15 +136,16 @@ function startTimer(time) {
             document.querySelector(".time_next").textContent = "Time over :  "
             let answer = question.right_answer;
 
-          let options =   document.querySelector('.option-list');
+            let options = document.querySelector('.option-list');
 
-          for (const item of options.children) {
-            
-            if(item.getAttribute('data-value') == answer  ){
-            item.classList.add('correct')
+            for (const item of options.children) {
+
+
+                if (item.getAttribute('data-value') == answer) {
+                    item.classList.add('correct')
+                }
             }
-          }
-          
+
         }
     }
 
