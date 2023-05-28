@@ -73,7 +73,6 @@ function bring_quiz(id) {
                     </div>
                 </div>
             `;
-
     }
 
 
@@ -88,7 +87,6 @@ function bring_quiz(id) {
                 <div class="question">${question.text}</div>
 
                 <div class="option-list">
-
                     ${optionsHTML}
                 </div>
             </section>
@@ -104,7 +102,6 @@ function bring_quiz(id) {
             option.classList.toggle('disabled');
 
             if (!option.classList.contains('disabled')) {
-
 
                 let otherOptions = Array.from(options).filter(opt => opt !== option);
                 otherOptions.forEach(opt => opt.classList.add('disabled'));
@@ -139,8 +136,6 @@ function startTimer(time) {
             let options = document.querySelector('.option-list');
 
             for (const item of options.children) {
-
-
                 if (item.getAttribute('data-value') == answer) {
                     item.classList.add('correct')
                 }
