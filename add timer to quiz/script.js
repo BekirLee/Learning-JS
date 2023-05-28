@@ -26,9 +26,6 @@ var bringer = document.getElementById("quizes");
 var question;
 
 
-
-
-
 let button = document.querySelector(".btn-start.main");
 
 var startQuestionIndex = 0;
@@ -55,6 +52,7 @@ nextButton.addEventListener("click", function () {
 
 
 
+
 function bring_quiz(id) {
 
     question = questions[id];
@@ -74,6 +72,7 @@ function bring_quiz(id) {
                 </div>
             `;
     }
+
 
 
     let quizHTML = `  <div class="header">
