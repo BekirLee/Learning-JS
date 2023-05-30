@@ -56,6 +56,10 @@
     margin-bottom: 10px;
 }
 
+.card-body{
+    width: 550px;
+}
+
 .disabled {
     pointer-events: none;
 }
@@ -74,18 +78,19 @@
     justify-content: space-between;
     background-color: rgb(14, 140, 237);
     padding: 3px;
-    border-radius: 3px ;
+    border-radius: 3px;
 }
 
-.timer .time_next,.second_time{
+.timer .time_next,
+.second_time {
     color: #fff;
 }
 
-.second_time{
+.second_time {
     background-color: coral;
     width: 20px;
     padding: 1px;
-    border-radius: 3px ;
+    border-radius: 3px;
     text-align: center;
 }
 
@@ -93,4 +98,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.time-line {
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: orange;
+    height: 4px;
 }

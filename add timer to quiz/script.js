@@ -31,10 +31,11 @@ let button = document.querySelector(".btn-start.main");
 var startQuestionIndex = 0;
 button.addEventListener("click", function () {
     // timer
-    startTimer(1);
+    startTimer(10);
     // 
     button.style.display = "none"; // Start düyməsini gizlədər
     bring_quiz(startQuestionIndex);
+    timeLine();
 });
 
 
@@ -45,8 +46,9 @@ nextButton.addEventListener("click", function () {
     bringer.innerHTML = '';
     startQuestionIndex++;
     // timer
-    startTimer(1);
+    startTimer(10);
     bring_quiz(startQuestionIndex);
+ 
 
 });
 
@@ -79,8 +81,9 @@ function bring_quiz(id) {
              <div class="title_text"><span>Begin Quiz</span></div>
             <div class="timer">
                 <div class="time_next">Remaining time:</div>
-                <div class="second_time">1</div>
+                <div class="second_time">10</div>
             </div>
+            <div class="time-line"></div>
             </div>
             <section id="${question.id}" class="card-body">
                 <div class="question">${question.text}</div>
@@ -143,4 +146,17 @@ function startTimer(time) {
         }
     }
 
+}
+
+let counterLine;
+function timeLine() {
+    let timeWidth = 0;
+    counterLine = setInterval(timer, 100);
+    function timer() {
+        timeWidth += 5;
+        document.querySelector(".time-line").style.width = timeWidth + "px";
+        if (timeWidth > 549) {
+            clearInterval(counterLine);
+        }
+    }
 }
