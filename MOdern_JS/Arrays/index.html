@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        const products = [
+            { name: "iphone 13", price: "1200$" },
+            { name: "iphone 13", price: "1200$" },
+            { name: "iphone 13", price: "1200$" },
+            { name: "iphone 13", price: "1200$" }
+        ]
+
+        // const oddNumbers = numbers.filter((number) => number % 2 == 1);
+        // const oddNumbers = numbers.map((number) => number % 2 == 1);
+
+        const result = products.map(product => product.price);
+        console.log(result);
+    </script>
+
+</body>
+
+</html>
