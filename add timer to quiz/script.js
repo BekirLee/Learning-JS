@@ -155,7 +155,7 @@ function timeLine() {
     function timer() {
         timeWidth += 5;
         document.querySelector(".time-line").style.width = timeWidth + "px";
-        if (timeWidth > 549) {
+        if (timeWidth > 559) {
             clearInterval(counterLine);
         }
     }

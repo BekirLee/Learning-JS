@@ -58,6 +58,8 @@
 
 .card-body{
     width: 550px;
+    padding: 0px !important;
+    margin: 10px;
 }
 
 .disabled {
@@ -96,6 +98,7 @@
 
 .header {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: space-between;
 }
@@ -107,4 +110,6 @@
     left: 0;
     background-color: orange;
     height: 4px;
-}
+    margin-bottom: -5px;
+
+ }
