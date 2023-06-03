@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // const message1 = ["bir", "iki", "uc", "dort", "bes"];
+        // const message2 = ["alti", "yeddi", "sekkiz"];
+        // const gather = [...message1, ...message2];
+        // console.log(gather);
+
+        function numbers(...args) {
+            let sum = 0;
+
+            for (let number of args) {
+                sum += number;
+            }
+            return sum;
+
+        }
+       console.log( numbers(1, 2, 3));
+        numbers(4, 5, 6, 7);
+
+
+
+    </script>
+
+</body>
+
+</html>
