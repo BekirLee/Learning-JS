@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class UserES6 {
+            constructor(name, age, motherland) {
+                this.name = name;
+                this.age = age;
+                this.motherland = motherland;
+            }
+            countDate() {
+                let date = new Date().getFullYear();
+                return date - this.age;
+            }
+
+            get ad() {
+                return this._ad;
+            }
+
+            set ad(value) {
+                if (value.length <= 3) {
+                    console.log("Not enough characters!");
+                    return;
+                }
+                this._ad = value;
+            }
+
+        }
+        let user1 = new UserES6("Ni", 17, "Sheki");
+
+
+        console.log(user1);
+        console.log(user1.ad);
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html
