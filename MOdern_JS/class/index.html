@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+
+        function UserES5(name, age, motherland) {
+            this.name = name;
+            this.age = age;
+            this.motherland = motherland;
+            this.countDate = function () {
+                let date = new Date().getFullYear;
+                return date - this.age;
+            }
+        }
+
+        let nihad = new UserES5("Nihad", 17, "Sheki");
+        let ali = new UserES5("Ali", 20, "Ganja");
+        let ramil = new UserES5("Ramil", 20, "Dashkesen");
+
+        console.log(nihad.countDate());
+        class UserES6 {
+            constructor(name, age, motherland) {
+                this.name = name;
+                this.age = age;
+                this.motherland = motherland;
+            }
+            countDate() {
+                let date = new Date().getFullYear();
+                return date - this.age;
+            }
+
+
+        }
+        let user1 = new UserES6("Nihad Bakirli", 17, "Sheki");
+        let user2 = new UserES6("Ali", 20, "Goy-gol");
+        let user3 = new UserES6("Ramil", 19, "Dashkesen");
+
+        console.log(user1.countDate());
+        console.log(user3);
+        console.log(user2);
+
+
+
+
+
+    </script>
+
 </body>
+
 </html>
