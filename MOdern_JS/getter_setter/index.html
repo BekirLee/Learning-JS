@@ -18,6 +18,11 @@
                 this.motherland = motherland;
             }
 
+            getAge() {
+                let date = new Date().getFullYear();
+                return date - this.age;
+            }
+
             get name() {
                 return this._name;
             }
@@ -27,12 +32,23 @@
                 }
                 this._name = value;
             }
+
+            get age() {
+                return this._age;
+            }
+
+            set age(value) {
+                if (value < 1900 || value > new Date().getFullYear()) {
+                    console.log("Age is not correct");
+                }
+                this._age = value;
+            }
         }
 
-        let user = new User("Nihad Bakirli", 17, "Sheki");
+        let user = new User("Nihad Bakirli", 2005, "Sheki");
 
-        console.log(user);
-        console.log(user.name);
+        console.log(user.getAge());
+        console.log(user._age);
         console.log(user._name);
 
 
