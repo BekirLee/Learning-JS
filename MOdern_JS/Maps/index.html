@@ -13,18 +13,14 @@
         const students = new Map();
         let username = { user: "Nihad Bakirli" };
         students.set(1, "NIhad");
-        students.set(user, "NIhad");
         students.set(2, "Bakirli");
+        students.set(username, "Nİhad :user Bakirli");
+
 
         console.log(students.get(1));
         console.log(students.get(2));
-        console.log(students.get(user));
-
-
-
-
-
-        console.log(username.get(user))
+        console.log(students.get(username));
+        console.log(username.get(user));
 
     </script>
 
