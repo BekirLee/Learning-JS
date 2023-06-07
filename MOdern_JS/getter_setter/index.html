@@ -11,36 +11,29 @@
 <body>
     <script>
 
-        class UserES6 {
+        class User {
             constructor(name, age, motherland) {
                 this.name = name;
                 this.age = age;
                 this.motherland = motherland;
             }
-            countDate() {
-                let date = new Date().getFullYear();
-                return date - this.age;
-            }
 
-            get ad() {
-                return this._ad;
+            get name() {
+                return this._name;
             }
-
-            set ad(value) {
-                if (value.length <= 3) {
-                    console.log("Not enough characters!");
-                    return;
+            set name(value) {
+                if (value.length < 3) {
+                    console.log("Not enough characters! ");
                 }
-                this._ad = value;
+                this._name = value;
             }
-
         }
-        let user1 = new UserES6("Ni", 17, "Sheki");
 
+        let user = new User("Ni", 17, "Sheki");
 
-        console.log(user1);
-        console.log(user1.ad);
-
+        console.log(user);
+        console.log(user.name);
+        console.log(user._name);
 
 
 
