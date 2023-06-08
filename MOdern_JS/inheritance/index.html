@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // parent
+        class User1 {
+
+            constructor(name, city, date) {
+
+                this.name = name;
+                this.city = city;
+                this.date = date;
+            }
+
+            countAge() {
+                let time = new Date().getFullYear();
+                return time - this.date;
+            }
+        }
+
+        //child
+
+        class User2 extends User1 {
+            constructor(name, city, date, school) {
+                super(name, city, date);
+                this.school = school;
+            }
+        }
+
+        let user1 = new User1("nihad", "Sheki", 2005);
+        let user2 = new User2("ali", "Ganja", 2000, "Goygol");
+
+        console.log(user1);
+        console.log(user2.countAge());
+
+
+
+    </script>
+
+</body>
+
+</html>
