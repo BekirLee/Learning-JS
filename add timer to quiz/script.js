@@ -36,6 +36,8 @@ button.addEventListener("click", function () {
     // 
     button.style.display = "none"; // Start düyməsini gizlədər
     nextButton.style.display = "block";
+    previousButton.style.display = "block";
+
     bring_quiz(startQuestionIndex);
     timeLine();
 });
@@ -50,7 +52,7 @@ nextButton.addEventListener("click", function () {
     startQuestionIndex++;
 
     //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
-    if (startQuestionIndex === questions.length - 1 ) {
+    if (startQuestionIndex === questions.length - 1) {
         isQuizFinished = true;
     }
 
@@ -64,6 +66,32 @@ nextButton.addEventListener("click", function () {
 
 
 });
+
+let previousButton = document.querySelector(".previous");
+
+previousButton.style.display = "none";
+
+previousButton.addEventListener("click", function () {
+
+    bringer.innerHTML = '';
+    startQuestionIndex--;
+
+    //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
+    if (startQuestionIndex === questions.length - 1) {
+        isQuizFinished = true;
+    }
+
+    // timer
+
+    bring_quiz(startQuestionIndex);
+    clearInterval(counter);
+    startTimer(10);
+    clearInterval(counterLine);
+    timeLine();
+
+
+});
+
 
 
 
@@ -110,8 +138,8 @@ function bring_quiz(id) {
 
     if (id === questions.length - 1) {
         let quizHTML = `
-        <div class="result">
-        Quiz over
+        <div class="card">
+        <div class="card-body"> Quiz over.</div>
         </div>   `
         bringer.insertAdjacentHTML("beforeend", quizHTML);
         nextButton.style.display = "none";
@@ -122,27 +150,29 @@ function bring_quiz(id) {
     options.forEach(option => {
 
         option.addEventListener('click', function () {
+            //selected elave olunur ki, hover secildikde olmasin.
+            option.classList.add('selected');
+            // if (!option.classList.contains('disabled')) {
 
+            let otherOptions = Array.from(options).filter(opt => opt !== option);
+            otherOptions.forEach(opt => opt.classList.add('disabled'));
 
-            option.classList.remove("selected");
-
-            if (!option.classList.contains('disabled')) {
-
-                let otherOptions = Array.from(options).filter(opt => opt !== option);
+            let icon = option.querySelector(".icon i");
+            if (option.dataset.value === question.right_answer) {
+                option.classList.add("correct");
+                icon.classList.add("fa-check");
                 otherOptions.forEach(opt => opt.classList.add('disabled'));
 
-                let icon = option.querySelector(".icon i");
-                if (option.dataset.value === question.right_answer) {
-                    option.classList.add("correct");
-                    icon.classList.add("fa-check");
-                }
-                else {
-                    option.classList.add("incorrect");
-                    icon.classList.add("fa-times");
-                }
-                clearInterval(counterLine);
-                clearInterval(counter);
             }
+            else {
+                option.classList.add("incorrect");
+                icon.classList.add("fa-times");
+                otherOptions.forEach(opt => opt.classList.add('disabled'));
+
+            }
+            clearInterval(counterLine);
+            clearInterval(counter);
+            // }
         });
     });
 

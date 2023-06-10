@@ -38,10 +38,10 @@
     border-radius: 12px;
 }
 
-.option:hover {
+/* .option:hover {
     color: #fff;
     background-color: rgb(229, 178, 10);
-}
+} */
 
 /* .option.incorrect:hover {
     color: #fff;
@@ -118,4 +118,15 @@
     width: 100px !important;
     height: 35px !important;
     padding: 5px !important;
+}
+
+.option:hover:not(.selected) {
+    color: #fff;
+    background-color: rgb(229, 178, 10);
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
