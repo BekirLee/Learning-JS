@@ -34,6 +34,7 @@ button.addEventListener("click", function () {
     startTimer(10);
     // 
     button.style.display = "none"; // Start düyməsini gizlədər
+    nextButton.style.display = "block";
     bring_quiz(startQuestionIndex);
     timeLine();
 });
@@ -41,14 +42,19 @@ button.addEventListener("click", function () {
 
 let nextButton = document.querySelector(".next");
 
-
+nextButton.style.display = "none";
 nextButton.addEventListener("click", function () {
+
     bringer.innerHTML = '';
     startQuestionIndex++;
     // timer
-    startTimer(10);
+
     bring_quiz(startQuestionIndex);
- 
+    clearInterval(counter);
+    startTimer(10);
+    clearInterval(counterLine);
+    timeLine();
+
 
 });
 
@@ -101,7 +107,8 @@ function bring_quiz(id) {
 
         option.addEventListener('click', function () {
 
-            option.classList.toggle('disabled');
+
+            option.classList.remove("selected");
 
             if (!option.classList.contains('disabled')) {
 
@@ -111,12 +118,14 @@ function bring_quiz(id) {
                 let icon = option.querySelector(".icon i");
                 if (option.dataset.value === question.right_answer) {
                     option.classList.add("correct");
-
                     icon.classList.add("fa-check");
-                } else {
+                }
+                else {
                     option.classList.add("incorrect");
                     icon.classList.add("fa-times");
                 }
+                clearInterval(counterLine);
+                clearInterval(counter);
             }
         });
     });
@@ -142,10 +151,8 @@ function startTimer(time) {
                     item.classList.add('correct')
                 }
             }
-
         }
     }
-
 }
 
 let counterLine;

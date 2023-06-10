@@ -1,4 +1,4 @@
 function UI() {
-    this.button =  document.querySelector(".btn-start.main")
- 
- }
+    this.button = document.querySelector(".btn-start.main")
+
+}
