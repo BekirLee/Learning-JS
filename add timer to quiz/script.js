@@ -23,10 +23,11 @@ let questions = [
 ];
 
 let isQuizFinished = false;
+
 var bringer = document.getElementById("quizes");
 var question;
 
-
+//start button
 let button = document.querySelector(".btn-start.main");
 
 var startQuestionIndex = 0;
@@ -42,7 +43,7 @@ button.addEventListener("click", function () {
     timeLine();
 });
 
-
+//next button
 let nextButton = document.querySelector(".next");
 
 nextButton.style.display = "none";
@@ -67,6 +68,7 @@ nextButton.addEventListener("click", function () {
 
 });
 
+//previous button
 let previousButton = document.querySelector(".previous");
 
 previousButton.style.display = "none";
@@ -76,10 +78,7 @@ previousButton.addEventListener("click", function () {
     bringer.innerHTML = '';
     startQuestionIndex--;
 
-    //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
-    if (startQuestionIndex === questions.length - 1) {
-        isQuizFinished = true;
-    }
+
 
     // timer
 
@@ -95,7 +94,7 @@ previousButton.addEventListener("click", function () {
 
 
 
-
+//bring quiz from back
 function bring_quiz(id) {
 
     question = questions[id];
@@ -135,16 +134,11 @@ function bring_quiz(id) {
         `;
 
     bringer.insertAdjacentHTML("beforeend", quizHTML);
-
-    if (id === questions.length - 1) {
-        let quizHTML = `
-        <div class="card">
-        <div class="card-body"> Quiz over.</div>
-        </div>   `
-        bringer.insertAdjacentHTML("beforeend", quizHTML);
+    if (id === question.length ) {
+        let quizOverHTML = `<div class="result">Quiz Over</div>`;
+        bringer.insertAdjacentHTML("beforeend", quizOverHTML);
         nextButton.style.display = "none";
     }
-
 
     let options = document.querySelectorAll('.option');
     options.forEach(option => {
