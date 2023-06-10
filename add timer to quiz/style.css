@@ -1,5 +1,6 @@
 .btn-start.main,
-.quiz-box {
+.quiz-box,
+.score_box {
     position: absolute !important;
     top: 50%;
     left: 50%;
@@ -134,4 +135,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.score_box.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.score_box {
+    width: 550px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
+    transform: translate(-50%, -50%) scale(0.7);
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    pointer-events: none;
 }

@@ -55,6 +55,7 @@ nextButton.addEventListener("click", function () {
     //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
     if (startQuestionIndex === questions.length - 1) {
         isQuizFinished = true;
+        document.querySelector(".score_box").classList.add("active");
     }
 
     // timer
@@ -134,11 +135,9 @@ function bring_quiz(id) {
         `;
 
     bringer.insertAdjacentHTML("beforeend", quizHTML);
-    if (id === question.length ) {
-        let quizOverHTML = `<div class="result">Quiz Over</div>`;
-        bringer.insertAdjacentHTML("beforeend", quizOverHTML);
-        nextButton.style.display = "none";
-    }
+
+
+
 
     let options = document.querySelectorAll('.option');
     options.forEach(option => {
@@ -156,7 +155,6 @@ function bring_quiz(id) {
                 option.classList.add("correct");
                 icon.classList.add("fa-check");
                 otherOptions.forEach(opt => opt.classList.add('disabled'));
-
             }
             else {
                 option.classList.add("incorrect");
