@@ -22,6 +22,7 @@ let questions = [
     },
 ];
 
+let isQuizFinished = false;
 var bringer = document.getElementById("quizes");
 var question;
 
@@ -47,6 +48,12 @@ nextButton.addEventListener("click", function () {
 
     bringer.innerHTML = '';
     startQuestionIndex++;
+
+    //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
+    if (startQuestionIndex === questions.length - 1 ) {
+        isQuizFinished = true;
+    }
+
     // timer
 
     bring_quiz(startQuestionIndex);
@@ -82,7 +89,6 @@ function bring_quiz(id) {
     }
 
 
-
     let quizHTML = `  <div class="header">
              <div class="title_text"><span>Begin Quiz</span></div>
             <div class="timer">
@@ -101,6 +107,16 @@ function bring_quiz(id) {
         `;
 
     bringer.insertAdjacentHTML("beforeend", quizHTML);
+
+    if (id === questions.length - 1) {
+        let quizHTML = `
+        <div class="result">
+        Quiz over
+        </div>   `
+        bringer.insertAdjacentHTML("beforeend", quizHTML);
+        nextButton.style.display = "none";
+    }
+
 
     let options = document.querySelectorAll('.option');
     options.forEach(option => {
@@ -129,6 +145,9 @@ function bring_quiz(id) {
             }
         });
     });
+
+
+
 }
 
 let counter;
@@ -136,6 +155,11 @@ function startTimer(time) {
     counter = setInterval(timer, 1000);
     // setInterval(timer, 1000);
     function timer() {
+
+        if (isQuizFinished) {
+            clearInterval(counter);
+            return;
+        }
         document.querySelector(".second_time").textContent = time;
         time--;
         if (time < 0) {
@@ -148,7 +172,7 @@ function startTimer(time) {
 
             for (const item of options.children) {
                 if (item.getAttribute('data-value') == answer) {
-                    item.classList.add('correct')
+                    item.classList.add('correct');
                 }
             }
         }
@@ -160,6 +184,12 @@ function timeLine() {
     let timeWidth = 0;
     counterLine = setInterval(timer, 100);
     function timer() {
+
+        if (isQuizFinished) {
+            clearInterval(counterLine);
+            return;
+        }
+
         timeWidth += 5;
         document.querySelector(".time-line").style.width = timeWidth + "px";
         if (timeWidth > 559) {
