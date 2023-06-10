@@ -55,6 +55,7 @@ nextButton.addEventListener("click", function () {
     //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
     if (startQuestionIndex === questions.length - 1) {
         isQuizFinished = true;
+        // last change for write "quiz over"
         document.querySelector(".score_box").classList.add("active");
     }
 
