@@ -1,20 +1,20 @@
 let questions = [
     {
-        id: 0,
+        id: 1,
         type: "Quiz",
         text: "Which programming language is JavaScript?",
         options: { a: "C#", b: "Java", c: "C", d: "JavaScript" },
         right_answer: "d",
     },
     {
-        id: 1,
+        id: 2,
         type: "Quiz",
         text: "Which programming language is Python?",
         options: { a: "C#", b: "Java", c: "C", d: "Python" },
         right_answer: "d",
     },
     {
-        id: 2,
+        id: 3,
         type: "Quiz",
         text: "Which programming language is Ruby?",
         options: { a: "Ruby", b: "Java", c: "C", d: "JavaScript" },
@@ -22,19 +22,29 @@ let questions = [
     },
 ];
 
+
+
+
 let isQuizFinished = false;
 
 var bringer = document.getElementById("quizes");
 var question;
-
+var curentquestionCount;
+var questionsCount;
 //start button
 let button = document.querySelector(".btn-start.main");
 
 var startQuestionIndex = 0;
 button.addEventListener("click", function () {
     // timer
-    startTimer(10);
+    startTimer(9);
     // 
+
+    curentquestionCount = document.querySelector(".currentQuestionCount")
+    questionsCount = document.querySelector(".questionsCount")
+    
+    curentquestionCount.textContent = startQuestionIndex + 1;
+    questionsCount.textContent = questions.length;
     button.style.display = "none"; // Start düyməsini gizlədər
     nextButton.style.display = "block";
     previousButton.style.display = "block";
@@ -51,19 +61,30 @@ nextButton.addEventListener("click", function () {
 
     bringer.innerHTML = '';
     startQuestionIndex++;
+ 
 
     //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
-    if (startQuestionIndex === questions.length - 1) {
+    if (startQuestionIndex === questions.length) {
         isQuizFinished = true;
         // last change for write "quiz over"
+        if (isQuizFinished) {
+            document.querySelector(".quiz-box").remove();
+
+        }
         document.querySelector(".score_box").classList.add("active");
     }
 
     // timer
 
-    bring_quiz(startQuestionIndex);
+    if (startQuestionIndex < questions.length) {
+
+        bring_quiz(startQuestionIndex);
+    }
+
+
+
     clearInterval(counter);
-    startTimer(10);
+    startTimer(9);
     clearInterval(counterLine);
     timeLine();
 
@@ -86,7 +107,7 @@ previousButton.addEventListener("click", function () {
 
     bring_quiz(startQuestionIndex);
     clearInterval(counter);
-    startTimer(10);
+    startTimer(9);
     clearInterval(counterLine);
     timeLine();
 
@@ -100,7 +121,7 @@ previousButton.addEventListener("click", function () {
 function bring_quiz(id) {
 
     question = questions[id];
-
+    curentquestionCount.textContent = id+1;
     let optionsHTML = "";
 
     for (let option in question.options) {
@@ -127,7 +148,7 @@ function bring_quiz(id) {
             <div class="time-line"></div>
             </div>
             <section id="${question.id}" class="card-body">
-                <div class="question">${question.text}</div>
+                <div class="question">${question.id}. ${question.text}</div>
 
                 <div class="option-list">
                     ${optionsHTML}
@@ -176,7 +197,6 @@ function bring_quiz(id) {
 let counter;
 function startTimer(time) {
     counter = setInterval(timer, 1000);
-    // setInterval(timer, 1000);
     function timer() {
 
         if (isQuizFinished) {
@@ -204,8 +224,8 @@ function startTimer(time) {
 
 let counterLine;
 function timeLine() {
-    let timeWidth = 0;
-    counterLine = setInterval(timer, 100);
+    let timeWidth = 100;
+    counterLine = setInterval(timer, 1000);
     function timer() {
 
         if (isQuizFinished) {
@@ -213,9 +233,9 @@ function timeLine() {
             return;
         }
 
-        timeWidth += 5;
-        document.querySelector(".time-line").style.width = timeWidth + "px";
-        if (timeWidth > 559) {
+        timeWidth -= 10;
+        document.querySelector(".time-line").style.width = timeWidth + "%";
+        if (timeWidth >= 100) {
             clearInterval(counterLine);
         }
     }

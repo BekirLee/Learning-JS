@@ -6,14 +6,21 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.btn{
+    outline: none;
+    border: none;
+    box-shadow: 0 3px 4px #00000032;
+    /* width: 100px; */
+}
 
 .quiz-box {
-    width: 550px;
+    width: 60%;
     padding: 20px;
     opacity: 0;
     pointer-events: none;
     transition: all 1.8s ease;
     transform: translate(-50%, -50%)scale(1);
+    border: none;
 }
 
 .quiz-box.active {
@@ -112,6 +119,7 @@
 
     position: absolute;
     bottom: 0;
+    width: 100%;
     left: 0;
     background-color: orange;
     height: 4px;
