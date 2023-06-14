@@ -42,7 +42,7 @@ button.addEventListener("click", function () {
 
     curentquestionCount = document.querySelector(".currentQuestionCount")
     questionsCount = document.querySelector(".questionsCount")
-    
+
     curentquestionCount.textContent = startQuestionIndex + 1;
     questionsCount.textContent = questions.length;
     button.style.display = "none"; // Start düyməsini gizlədər
@@ -61,7 +61,7 @@ nextButton.addEventListener("click", function () {
 
     bringer.innerHTML = '';
     startQuestionIndex++;
- 
+
 
     //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
     if (startQuestionIndex === questions.length) {
@@ -121,7 +121,7 @@ previousButton.addEventListener("click", function () {
 function bring_quiz(id) {
 
     question = questions[id];
-    curentquestionCount.textContent = id+1;
+    curentquestionCount.textContent = id + 1;
     let optionsHTML = "";
 
     for (let option in question.options) {
