@@ -2,24 +2,28 @@ let questions = [
     {
         id: 1,
         type: "Quiz",
-        text: "Which programming language is JavaScript?",
-        options: { a: "C#", b: "Java", c: "C", d: "JavaScript" },
-        right_answer: "d",
+        text: "Takt tezliyi komputerin hansı hissəsinn göstəricisi sayılır?",
+        options: { a: "prosessor", b: "RAM", c: "Klaviatura", d: "SkanerHDD" },
+        right_answer: "a",
     },
+
     {
         id: 2,
         type: "Quiz",
-        text: "Which programming language is Python?",
-        options: { a: "C#", b: "Java", c: "C", d: "Python" },
-        right_answer: "d",
+        text: "Kompüteri işə salarkən bu sistemlərdən hansı daha əvvəl işə düşür?",
+        options: { a: "BIOSMS", b: "Windows", c: "Autorun.EXE", d: "AutoStart" },
+        right_answer: "b",
     },
+
+
     {
         id: 3,
         type: "Quiz",
-        text: "Which programming language is Ruby?",
-        options: { a: "Ruby", b: "Java", c: "C", d: "JavaScript" },
-        right_answer: "a",
+        text: "İnternet saytlarda gördüyünüz, əsasən 2-5 epizoddan ibaret kiçik ölçülü, animasiya necə adlanır?",
+        options: { a: "internet-klip", b: "banner", c: "video internet", d: "youtube" },
+        right_answer: "b",
     },
+
 ];
 
 
@@ -33,12 +37,16 @@ var questionsCount;
 let button = document.querySelector(".btn-start.main");
 
 var startQuestionIndex = 0;
+var index = 1;
 button.addEventListener("click", function () {
+
     document.querySelector(".quiz-box").style.display = "block";
     // timer
     startTimer(9);
     // 
+    // question = questions[id];
 
+    // previousButton.style.display = "none";
     curentquestionCount = document.querySelector(".currentQuestionCount")
     questionsCount = document.querySelector(".questionsCount")
 
@@ -46,7 +54,7 @@ button.addEventListener("click", function () {
     questionsCount.textContent = questions.length;
     button.style.display = "none"; // Start düyməsini gizlədər
     nextButton.style.display = "block";
-    previousButton.style.display = "block";
+
 
     bring_quiz(startQuestionIndex);
     timeLine();
@@ -57,6 +65,11 @@ let nextButton = document.querySelector(".next");
 
 nextButton.style.display = "none";
 nextButton.addEventListener("click", function () {
+    // previousButton.style.display = "block";
+    // if (index === 0) {
+    //     previousButton.style.display = "none";
+    // }
+
 
     bringer.innerHTML = '';
     startQuestionIndex++;
@@ -76,10 +89,8 @@ nextButton.addEventListener("click", function () {
     // timer
 
     if (startQuestionIndex < questions.length) {
-
         bring_quiz(startQuestionIndex);
     }
-
 
 
     clearInterval(counter);
@@ -93,9 +104,8 @@ nextButton.addEventListener("click", function () {
 //previous button
 let previousButton = document.querySelector(".previous");
 
-previousButton.style.display = "none";
-
 previousButton.addEventListener("click", function () {
+
 
     bringer.innerHTML = '';
     startQuestionIndex--;
@@ -111,6 +121,7 @@ previousButton.addEventListener("click", function () {
     timeLine();
 
 
+
 });
 
 
@@ -120,6 +131,9 @@ previousButton.addEventListener("click", function () {
 function bring_quiz(id) {
 
     question = questions[id];
+    previousButton.style.display = question.id === 1 ? "none" : "block";
+    nextButton.style.display = question.id === questions.length ? "none" : "block";
+
     curentquestionCount.textContent = id + 1;
     let optionsHTML = "";
 
