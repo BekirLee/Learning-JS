@@ -73,7 +73,8 @@ nextButton.addEventListener("click", function () {
 
     bringer.innerHTML = '';
     startQuestionIndex++;
-
+    //result button
+    var result = document.querySelector(".result");
 
     //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
     if (startQuestionIndex === questions.length) {
@@ -81,15 +82,41 @@ nextButton.addEventListener("click", function () {
         // last change for write "quiz over"
         if (isQuizFinished) {
             document.querySelector(".quiz-box").remove();
-
         }
-        document.querySelector(".score_box").classList.add("active");
     }
 
     // timer
 
     if (startQuestionIndex < questions.length) {
+        document.querySelector(".result");
         bring_quiz(startQuestionIndex);
+    }
+
+    result.addEventListener("click", function () {
+        bringer.innerHTML = '';
+        startQuestionIndex++;
+
+        if (startQuestionIndex === questions.length) {
+            isQuizFinished = true;
+            // last change for write "quiz over"
+            if (isQuizFinished) {
+                document.querySelector(".quiz-box").remove();
+            }
+        }
+
+        clearInterval(counter);
+        startTimer(9);
+        clearInterval(counterLine);
+        timeLine();
+        nextButton.style.display = "none";
+        previousButton.style.display = "none";
+
+        document.querySelector(".score_box").classList.add("active");
+
+    });
+
+    if (question.id === questions.length) {
+        result.style.display = "block";
     }
 
 
@@ -129,10 +156,10 @@ previousButton.addEventListener("click", function () {
 
 //bring quiz from back
 function bring_quiz(id) {
-
     question = questions[id];
     previousButton.style.display = question.id === 1 ? "none" : "block";
     nextButton.style.display = question.id === questions.length ? "none" : "block";
+
 
     curentquestionCount.textContent = id + 1;
     let optionsHTML = "";
