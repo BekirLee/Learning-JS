@@ -38,15 +38,16 @@ let button = document.querySelector(".btn-start.main");
 
 var startQuestionIndex = 0;
 var index = 1;
+//result button
+var result = document.querySelector(".result");
+
 button.addEventListener("click", function () {
 
     document.querySelector(".quiz-box").style.display = "block";
     // timer
     startTimer(9);
     // 
-    // question = questions[id];
 
-    // previousButton.style.display = "none";
     curentquestionCount = document.querySelector(".currentQuestionCount")
     questionsCount = document.querySelector(".questionsCount")
 
@@ -55,26 +56,42 @@ button.addEventListener("click", function () {
     button.style.display = "none"; // Start düyməsini gizlədər
     nextButton.style.display = "block";
 
+    if (startQuestionIndex != questions.length) {
+        result.style.display = "none";
+    }
+
+    //right arrow	
 
     bring_quiz(startQuestionIndex);
     timeLine();
 });
 
-//next button
 let nextButton = document.querySelector(".next");
+
+function nextBtn() {
+
+    startQuestionIndex++;
+}
+
+// document.addEventListener("keydown", (event) => {
+//     if (event.code === "Enter") {
+//         event.preventDefault(); // Sayfanın kaymaması için önlem alıyoruz
+//         if (startQuestionIndex < questions.length) {
+//             bringer.innerHTML = '';
+//             nextBtn();
+//             bring_quiz(startQuestionIndex);
+//         }
+//     }
+// });
+
+
+//next button
 
 nextButton.style.display = "none";
 nextButton.addEventListener("click", function () {
-    // previousButton.style.display = "block";
-    // if (index === 0) {
-    //     previousButton.style.display = "none";
-    // }
-
 
     bringer.innerHTML = '';
     startQuestionIndex++;
-    //result button
-    var result = document.querySelector(".result");
 
     //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
     if (startQuestionIndex === questions.length) {
@@ -88,9 +105,11 @@ nextButton.addEventListener("click", function () {
     // timer
 
     if (startQuestionIndex < questions.length) {
-        document.querySelector(".result");
         bring_quiz(startQuestionIndex);
     }
+    //result button
+
+
 
     result.addEventListener("click", function () {
         bringer.innerHTML = '';
@@ -133,11 +152,8 @@ let previousButton = document.querySelector(".previous");
 
 previousButton.addEventListener("click", function () {
 
-
     bringer.innerHTML = '';
     startQuestionIndex--;
-
-
 
     // timer
 
@@ -146,8 +162,6 @@ previousButton.addEventListener("click", function () {
     startTimer(9);
     clearInterval(counterLine);
     timeLine();
-
-
 
 });
 
