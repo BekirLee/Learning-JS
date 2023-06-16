@@ -23,8 +23,6 @@ let questions = [
 ];
 
 
-
-
 let isQuizFinished = false;
 
 var bringer = document.getElementById("quizes");
@@ -36,6 +34,7 @@ let button = document.querySelector(".btn-start.main");
 
 var startQuestionIndex = 0;
 button.addEventListener("click", function () {
+    document.querySelector(".quiz-box").style.display = "block";
     // timer
     startTimer(9);
     // 
