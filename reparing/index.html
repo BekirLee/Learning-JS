@@ -21,11 +21,11 @@
 
         const request = new XMLHttpRequest();
 
-        request.open("GET", "https://restcountries.com/v3.1/name/turkey");
+        request.open("GET", "https://restcountries.com/v3.1/name/zerbaijan");
         request.send();
 
         request.addEventListener("load", function () {
-            const data = JSON.parse(this.responseText);
+            var data = JSON.parse(this.responseText);
             console.log(data);
             datataker(data[0]);
         });
@@ -34,14 +34,14 @@
             const html = `
         <div class="col-3">
             <div class="card-100">
-                <img src="${data.flag.png}" class="card-img-top">
+                <img src="${data.flags.png}" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">${data.name.common}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Pupulation:${data.population}</li>
-                    <li class="list-group-item">Language:${Object.values(data.language)}</li>
-                    <li class="list-group-item">Area:${data.area}</li>
+                    <li class="list-group-item">Pupulation:${(data.population/1000000).toFixed(1)}million</li>
+                    <li class="list-group-item">Language:${Object.values(data.languages)}</li>
+                    <li class="list-group-item">Area:${data.area} km</li>
                 </ul>
 
             </div>
@@ -50,7 +50,7 @@
             document.querySelector(".container .row").insertAdjacentHTML("beforeend", html);
         }
     </script>
-
+)
 </body>
 
 </html>
