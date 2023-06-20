@@ -9,35 +9,18 @@
 
 <body>
     <script>
-        const login = (username, password, callback) => {
-            setTimeout(() => {
-                callback({ username: username, email: "nihadbekirli@gmail.com" })
-            }, 1000);
-        }
+        const request = new XMLHttpRequest();
 
-        const getPostByUsername = (username, callback) => {
-            setTimeout(() => {
-                callback("post1");
-            }, 2000);
-        }
+        request.open("GET", "https://restcountries.com/v3.1/name/azerbaijan");
+        request.send();
 
-        const getPostDetails = (username, callback) => {
-            setTimeout(() => {
-                callback("postDetails")
-            }, 2000);
-        }
+        request.addEventListener("load", function () {
+            const data = JSON.parse(this.responseText);
+            console.log(typeof data);
+            console.log( data);
 
-        login("NIhad", "12345", user => {
-            console.log(user);
-
-            getPostByUsername(user, posts => {
-                console.log(posts);
-            });
-
-            getPostDetails(user, details => {
-                console.log(details);
-            })
         });
+
 
     </script>
 
