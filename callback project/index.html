@@ -26,33 +26,45 @@
             request.send();
 
             request.addEventListener("load", function () {
-                var data = JSON.parse(this.responseText);
-                console.log(data);
-                datataker(data[0]);
+                const data = JSON.parse(this.responseText);
+                datataker(data);
+
+                const countries = data[0].borders.toString();
+                const req = new XMLHttpRequest();
+                req.open('GET', 'https://restcountries.com/v3.1/alpha?codes=' + countries);
+                req.send();
+
+
+                req.addEventListener("load", function () {
+                    const data = JSON.parse(this.responseText);
+                    datataker(data);
+                });
+
             });
+
         }
         countryTeker("azerbaijan");
-        countryTeker("russian");
-        countryTeker("turkey");
 
         function datataker(data) {
-            const html = `
+            for (const countri of data) {
+                const html = `
         <div class="col-3">
             <div class="card-100">
-                <img src="${data.flags.png}" class="card-img-top">
+                <img src="${countri.flags.png}" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">${data.name.common}</h5>
+                    <h5 class="card-title">${countri.name.common}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Pupulation:${(data.population / 1000000).toFixed(1)}million</li>
-                    <li class="list-group-item">Language:${Object.values(data.languages)}</li>
-                    <li class="list-group-item">Area:${data.area} km</li>
+                    <li class="list-group-item">Pupulation:${(countri.population / 1000000).toFixed(1)}million</li>
+                    <li class="list-group-item">Language:${Object.values(countri.languages)}</li>
+                    <li class="list-group-item">Area:${countri.area} km</li>
                 </ul>
 
             </div>
         </div>`;
 
-            document.querySelector(".container .row").insertAdjacentHTML("beforeend", html);
+                document.querySelector(".container .row").insertAdjacentHTML("beforeend", html);
+            }
         }
 
     </script>
