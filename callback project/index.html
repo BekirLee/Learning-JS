@@ -26,7 +26,15 @@
     </div>
 
     <div class="card" id="all">
+    </div>
 
+    <div class="card mb-3">
+        <div class="card-header">Komşu Ülkeler</div>
+        <div class="card-body">
+            <div class="row" id="neighbors">
+
+            </div>
+        </div>
     </div>
 
     <script>
@@ -47,17 +55,17 @@
                 console.log(data);
                 renderCountry(data[0]);
 
-                // const countries = data[0].borders.toString();
-                // const req = new XMLHttpRequest();
-                // req.open('GET', 'https://restcountries.com/v3.1/alpha?codes=' + countries);
-                // req.send();
+                const countries = data[0].borders.toString();
+                const req = new XMLHttpRequest();
+                req.open('GET', 'https://restcountries.com/v3.1/alpha?codes=' + countries);
+                req.send();
 
 
-                // req.addEventListener("load", function () {
-                //     const data = JSON.parse(this.responseText);
-                //     // datataker(data);
-                //     setCountry(data);
-                // });
+                req.addEventListener("load", function () {
+                    const data = JSON.parse(this.responseText);
+                    // datataker(data);
+                    neighborCountries(data);
+                });
 
             });
 
@@ -89,60 +97,30 @@
                  </div>
              </div>
  `;
-            document.querySelector("#all").innerHTML= html  ;
-}
+            document.querySelector("#all").innerHTML = html;
+        }
+
+        function neighborCountries(data) {
+            let html = "";
+            for (let country of data) {
+
+                html += `
+                <div class="col-2 mt-2 ">
+                  <div class="card">
+                        <img src="${country.flags.png}" class="card-img-top">
+                         <div class="card-body">
+                              <h5  class="card-title" >${country.name.common}</h5>
+                          </div>
+                        </div>
+
+                </div>
 
 
-            //     for (const countri of data) {
-            //         const html = `
-            // <div class="col-3">
-            //     <div class="card-100">
-            //         <img src="${countri.flags.png}" class="card-img-top">
-            //         <div class="card-body">
-            //             <h5 class="card-title">${countri.name.common}</h5>
-            //         </div>
-            //         <ul class="list-group list-group-flush">
-            //             <li class="list-group-item">Population:${(countri.population / 1000000).toFixed(1)}million</li>
-            //             <li class="list-group-item">Language:${Object.values(countri.languages)}</li>
-            //             <li class="list-group-item">Area:${countri.area} km</li>
-            //             <li class="list-group-item">Region: ${countri.region}   ${countri.subregion}</li>
+                `;
+            }
+            document.querySelector("#neighbors").innerHTML = html;
 
-            //         </ul>
-
-            //     </div>
-            // </div>`;
-
-            //         document.querySelector(".container .row").insertAdjacentHTML("beforeend", html);
-            //     }
-        
-
-//         function filterCountry(data) {
-//             let html = `
-//             <div class="card-header">
-//                 Result
-//                 <div class="card-body">
-//                     <div class="row">
-//                         <dov class="col-4"><img src=${data.flags.png}></dov>
-//                         <div class="col-8">
-//                             <div class="row">
-//                                 <dov class="col-4">Language:</dov>
-//                                 <div class="col-8">${data.name.common}</div>
-//                             </div>
-//                             <div class="row">
-//                                 <dov class="col-4">Population:</dov>
-//                                 <div class="col-8">:${(data.population / 1000000).toFixed(1)}million</div>
-//                             </div>
-//                             <div class="row">
-//                                 <dov class="col-4">Area:</dov>
-//                                 <div class="col-8">${data.area} km</div>    
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-// `;
-//             document.querySelector("#all").insertAdjacentHTML("beforeend", html);
-//         }
+        }
 
     </script>
 
