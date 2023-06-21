@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const serverStatus = true;
+        const login = (username, password, succes, error) => {
+            setTimeout(() => {
+                if (serverStatus) {
+                    succes({ username: username, email: "nihadbekirli@gmail.com" })
+                } else {
+                    error("Serves is closed!")
+                }
+            }, 1000);
+        }
+
+        const getPostByUsername = (username, succes) => {
+            setTimeout(() => {
+                succes("post1");
+            }, 2000);
+        }
+
+        const getPostDetails = (username, succes) => {
+            setTimeout(() => {
+                succes("postDetails")
+            }, 2000);
+        }
+
+        login("NIhad", "12345", user => {
+            console.log(user);
+
+            getPostByUsername(user, posts => {
+                console.log(posts);
+            });
+
+            getPostDetails(user, details => {
+                console.log(details);
+            })
+        }, (error) => {
+            console.log(error);
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>

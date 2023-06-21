@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const serverStatus = true;
+
+        const login = (username, password) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (serverStatus) {
+                        resolve({ username ,password })
+                    } else {
+                        reject("Serves is closed!")
+                    }
+                }, 1000);
+            })
+        }
+
+        const getPostByUsername = (name) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("post1");
+                }, 1000);
+            })
+        }
+
+        const getPostDetails = (post) => {
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+                    resolve("postDetails")
+                }, 2000);
+            })
+        }
+
+        // login("NIhad", "12345", user => {
+        //     console.log(user);
+
+        //     getPostByUsername(user, posts => {
+        //         console.log(posts);
+        //     });
+
+        //     getPostDetails(user, details => {
+        //         console.log(details);
+        //     })
+        // }, (error) => {
+        //     console.log(error);
+        // });
+
+
+
+        // const promise = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         if (serverStatus) {
+        //             resolve({ username: "nihadbakirli" });
+        //         }
+        //         else {
+        //             reject("No status!");
+        //         }
+        //     }, 2000)
+        // });
+
+
+
+
+            login("NIhad", "12nf19hv")
+                .then(user => {
+                    console.log(user);
+                    return getPostByUsername(user);
+                }).then(posts => {
+                    console.log(posts);
+                    return getPostDetails("posts");
+                }).then(details => {
+                    console.log(details);
+                }).catch(error => {
+                    console.log(error);
+                })
+
+        // login.then(user => {
+        //     console.log(user);
+        // }).catch(err => {
+        //     console.log(err);
+        // });
+
+
+
+    </script>
+
+</body>
+
+</html>
