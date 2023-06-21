@@ -20,6 +20,7 @@
 <body>
 
     <div class="container">
+        <div id="errors"></div>
         <div class="card my-3">
             <div class="card-body">
                 <div class="input-group">
@@ -34,7 +35,7 @@
     </div>
 
     <div class="card mb-3">
-        <div class="card-header">Komşu Ülkeler</div>
+        <div class="card-header">Neighbor countries</div>
         <div class="card-body">
             <div class="row" id="neighbors">
 
@@ -51,19 +52,28 @@
         function getCountry(country) {
 
             fetch("https://restcountries.com/v3.1/name/" + country)
-                .then((response) => response.json())
+                .then((response) => {
+                    if (!response.ok)
+                        throw new Error("No country!");
+                    return response.json()
+                })
                 .then((data) => {
                     renderCountry(data[0]);
-                    const countries = data[0].borders.toString();
-                    return fetch('https://restcountries.com/v3.1/alpha?codes=' + countries);
+                    const countries = data[0].borders;
+
+                    if (!countries)
+                        throw new Error("No neighbor country");
+
+                    return fetch('https://restcountries.com/v3.1/alpha?codes=' + countries.toString());
                 })
                 .then((response) => response.json())
-                .then((data) => (neighborCountries(data)));
-
+                .then((data) => (neighborCountries(data)))
+                .catch(err => error(err));
 
         }
 
         function renderCountry(data) {
+            document.querySelector("#neighbors").innerHTML = "";
 
             let html = `
            <div class="card-header">
@@ -118,6 +128,18 @@
 
         }
 
+        function error(danger) {
+            const html = `
+            <div class="alert alert-danger">
+                ${danger.message}
+            </div>  `;
+
+            setTimeout(function () {
+                document.querySelector("#errors").innerHTML = "";
+            }, 3000);
+
+            document.querySelector("#errors").innerHTML = html;
+        }
     </script>
 
 </body>
