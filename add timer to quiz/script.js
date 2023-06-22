@@ -29,6 +29,7 @@ let questions = [
 
 let isQuizFinished = false;
 
+let correctAnswers = 0;
 var bringer = document.getElementById("quizes");
 var question;
 var curentquestionCount;
@@ -66,86 +67,7 @@ button.addEventListener("click", function () {
     timeLine();
 });
 
-let nextButton = document.querySelector(".next");
 
-function nextBtn() {
-
-    startQuestionIndex++;
-}
-
-// document.addEventListener("keydown", (event) => {
-//     if (event.code === "Enter") {
-//         event.preventDefault(); // Sayfanın kaymaması için önlem alıyoruz
-//         if (startQuestionIndex < questions.length) {
-//             bringer.innerHTML = '';
-//             nextBtn();
-//             bring_quiz(startQuestionIndex);
-//         }
-//     }
-// });
-
-
-//next button
-
-nextButton.style.display = "none";
-nextButton.addEventListener("click", function () {
-
-    bringer.innerHTML = '';
-    startQuestionIndex++;
-
-    //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
-    if (startQuestionIndex === questions.length) {
-        isQuizFinished = true;
-        // last change for write "quiz over"
-        if (isQuizFinished) {
-            document.querySelector(".quiz-box").remove();
-        }
-    }
-
-    // timer
-
-    if (startQuestionIndex < questions.length) {
-        bring_quiz(startQuestionIndex);
-    }
-    //result button
-
-
-
-    result.addEventListener("click", function () {
-        bringer.innerHTML = '';
-        startQuestionIndex++;
-
-        if (startQuestionIndex === questions.length) {
-            isQuizFinished = true;
-            // last change for write "quiz over"
-            if (isQuizFinished) {
-                document.querySelector(".quiz-box").remove();
-            }
-        }
-
-        clearInterval(counter);
-        startTimer(9);
-        clearInterval(counterLine);
-        timeLine();
-        nextButton.style.display = "none";
-        previousButton.style.display = "none";
-
-        document.querySelector(".score_box").classList.add("active");
-
-    });
-
-    if (question.id === questions.length) {
-        result.style.display = "block";
-    }
-
-
-    clearInterval(counter);
-    startTimer(9);
-    clearInterval(counterLine);
-    timeLine();
-
-
-});
 
 //previous button
 let previousButton = document.querySelector(".previous");
@@ -164,9 +86,6 @@ previousButton.addEventListener("click", function () {
     timeLine();
 
 });
-
-
-
 
 //bring quiz from back
 function bring_quiz(id) {
@@ -228,6 +147,7 @@ function bring_quiz(id) {
 
             let icon = option.querySelector(".icon i");
             if (option.dataset.value === question.right_answer) {
+                correctAnswers += 1;
                 option.classList.add("correct");
                 icon.classList.add("fa-check");
                 otherOptions.forEach(opt => opt.classList.add('disabled'));
@@ -244,9 +164,76 @@ function bring_quiz(id) {
         });
     });
 
-
-
 }
+
+let nextButton = document.querySelector(".next");
+
+function nextBtn() {
+    startQuestionIndex++;
+}
+
+//next button
+
+nextButton.style.display = "none";
+nextButton.addEventListener("click", function () {
+
+    bringer.innerHTML = '';
+    startQuestionIndex++;
+
+    //isQuizFinished  quiz bitdikden sonra butun counter ve counterLine i silir
+    if (startQuestionIndex === questions.length) {
+        isQuizFinished = true;
+        // last change for write "quiz over"
+        if (isQuizFinished) {
+            document.querySelector(".quiz-box").remove();
+        }
+    }
+
+    // timer
+
+    if (startQuestionIndex < questions.length) {
+        bring_quiz(startQuestionIndex);
+    }
+    //result button
+
+
+    showResult(questionsCount.textContent, correctAnswers);
+
+    result.addEventListener("click", function () {
+        bringer.innerHTML = '';
+        startQuestionIndex++;
+
+        if (startQuestionIndex === questions.length) {
+            isQuizFinished = true;
+            // last change for write "quiz over"
+            if (isQuizFinished) {
+                document.querySelector(".quiz-box").remove();
+            }
+        }
+
+        clearInterval(counter);
+        startTimer(9);
+        clearInterval(counterLine);
+        timeLine();
+        nextButton.style.display = "none";
+        previousButton.style.display = "none";
+
+        document.querySelector(".score_box").classList.add("active");
+
+    });
+
+    if (question.id === questions.length) {
+        result.style.display = "block";
+    }
+
+
+    clearInterval(counter);
+    startTimer(9);
+    clearInterval(counterLine);
+    timeLine();
+
+
+});
 
 let counter;
 function startTimer(time) {
@@ -294,3 +281,9 @@ function timeLine() {
         }
     }
 }
+
+function showResult(allAnswers, corrects) {
+    let tag = `${allAnswers} sualdan ${corrects} duz cavab oldu!`;
+    document.querySelector(".score").innerHTML = tag;
+
+}   
