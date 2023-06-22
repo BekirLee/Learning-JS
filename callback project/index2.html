@@ -49,26 +49,46 @@
             getCountry(text);
         });
 
-        function getCountry(country) {
 
-            fetch("https://restcountries.com/v3.1/name/" + country)
-                .then((response) => {
-                    if (!response.ok)
-                        throw new Error("No country!");
-                    return response.json()
-                })
-                .then((data) => {
-                    renderCountry(data[0]);
-                    const countries = data[0].borders;
+        async function getCountry(country) {
+            try {
+                const response = await fetch("https://restcountries.com/v3.1/name/" + country);
+                if (!response.ok)
+                    throw new Error("No country!");
+                const data = await response.json();
+                renderCountry(data[0]);
 
-                    if (!countries)
-                        throw new Error("No neighbor country");
+                const countries = data[0].borders;
+                if (!countries)
+                    throw new Error("No neighbor country!");
+                const response2 = await fetch('https://restcountries.com/v3.1/alpha?codes=' + countries.toString());
+                const neighbors = await response2.json();
 
-                    return fetch('https://restcountries.com/v3.1/alpha?codes=' + countries.toString());
-                })
-                .then((response) => response.json())
-                .then((data) => (neighborCountries(data)))
-                .catch(err => error(err));
+                neighborCountries(neighbors);
+            }
+            catch (danger) {
+                error(danger);
+            }
+
+
+            // fetch("https://restcountries.com/v3.1/name/" + country)
+            //     .then((response) => {
+            //         if (!response.ok)
+            //             throw new Error("No country!");
+            //         return response.json()
+            //     })
+            //     .then((data) => {
+            //         renderCountry(data[0]);
+            //         const countries = data[0].borders;
+
+            //         if (!countries)
+            //             throw new Error("No neighbor country");
+
+            //         return fetch('https://restcountries.com/v3.1/alpha?codes=' + countries.toString());
+            //     })
+            //     .then((response) => response.json())
+            //     .then((data) => (neighborCountries(data)))
+            //     .catch(err => error(err));
 
         }
 
