@@ -66,6 +66,12 @@ button.addEventListener("click", function () {
     bring_quiz(startQuestionIndex);
     timeLine();
 });
+let nextButton = document.querySelector(".next");
+
+function nextBtn() {
+    startQuestionIndex++;
+}
+
 
 
 
@@ -87,6 +93,9 @@ previousButton.addEventListener("click", function () {
 
 });
 
+document.querySelector(".replay").addEventListener("click", function () {
+    window.location.reload();
+});
 //bring quiz from back
 function bring_quiz(id) {
     question = questions[id];
@@ -166,12 +175,6 @@ function bring_quiz(id) {
 
 }
 
-let nextButton = document.querySelector(".next");
-
-function nextBtn() {
-    startQuestionIndex++;
-}
-
 //next button
 
 nextButton.style.display = "none";
@@ -197,9 +200,9 @@ nextButton.addEventListener("click", function () {
     //result button
 
 
-    showResult(questionsCount.textContent, correctAnswers);
 
     result.addEventListener("click", function () {
+        showResult(questionsCount.textContent, correctAnswers);
         bringer.innerHTML = '';
         startQuestionIndex++;
 
@@ -225,7 +228,6 @@ nextButton.addEventListener("click", function () {
     if (question.id === questions.length) {
         result.style.display = "block";
     }
-
 
     clearInterval(counter);
     startTimer(9);
@@ -286,4 +288,5 @@ function showResult(allAnswers, corrects) {
     let tag = `${allAnswers} sualdan ${corrects} duz cavab oldu!`;
     document.querySelector(".score").innerHTML = tag;
 
-}   
+}
+
