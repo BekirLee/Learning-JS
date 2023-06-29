@@ -1,0 +1,62 @@
+body {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+#controllers i {
+    font-size: 20px;
+}
+
+#progress input {
+    width: 100%;
+}
+
+#times {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#controllerFlexRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#volume_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.volume-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.volume-container i {
+    margin-right: 5px;
+}
+
+.ulMusiclist li.playing {
+    background-color: #0b5eb7;
+    color: #fff;
+}
+
+.ulMusiclist li {
+    cursor: pointer;
+}
+#music_img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+#myplayer{
+    width: 450px;
+}
