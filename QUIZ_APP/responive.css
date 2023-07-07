@@ -1,0 +1,25 @@
+@media (max-width:1650px) {
+
+    .card.quiz-box {
+        width: 70%;
+        transition: 0.5s;   
+    }
+
+    @media (max-width:1200px) {
+        .card.quiz-box {
+            width: 65%;
+        }
+    }
+
+    @media (max-width:1000px) {
+        .card.quiz-box {
+            width: 60%;
+        }
+    }
+
+    @media (max-width:800px) {
+        .card.quiz-box {
+            width: 55%;
+        }
+    }
+}

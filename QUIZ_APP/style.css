@@ -1,0 +1,174 @@
+.btn-start.main,
+.quiz-box,
+.score_box {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.btn {
+    outline: none;
+    border: none;
+    box-shadow: 0 3px 4px #00000032;
+    /* width: 100px; */
+}
+
+
+.quiz-box {
+    width: 90%;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1.8s ease;
+    transform: translate(-50%, -50%)scale(1);
+    border: none;
+    display: none;
+}
+
+.quiz-box.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.head .title {
+    margin-left: 20px;
+}
+
+.option-list .option .inner_option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.option {
+    padding: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: solid 1px rgb(32, 4, 4);
+    border-radius: 12px;
+}
+
+/* .option:hover {
+    color: #fff;
+    background-color: rgb(229, 178, 10);
+} */
+
+/* .option.incorrect:hover {
+    color: #fff;
+    background-color: red;
+} */
+
+.inner_option {
+    padding: 3px;
+}
+
+.card-body .question {
+    margin-bottom: 10px;
+}
+
+.card-body {
+
+    padding: 0px !important;
+    margin: 10px;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.correct {
+    color: #155724;
+    background: #d4edda;
+    transition: 0.6s;
+}
+
+.incorrect {
+    color: #721c24;
+    background: #f8d7da;
+    transition: 0.6s;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(7, 79, 133);
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.timer .time_next,
+.second_time {
+    color: #fff;
+}
+
+.second_time {
+    background-color: coral;
+    width: 20px;
+    padding: 1px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.time-line {
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background-color: orange;
+    height: 4px;
+    margin-bottom: -5px;
+
+}
+
+.next {
+    width: 100px !important;
+    height: 35px !important;
+    padding: 5px !important;
+}
+
+.option.hoverable:hover:not(.selected) {
+    color: #fff;
+    background-color: rgb(229, 178, 10);
+    transition: 0.4s;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.score_box.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.score_box {
+    width: 550px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
+    transform: translate(-50%, -50%) scale(0.7);
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    pointer-events: none;
+
+}
+
+.resultSide {
+    text-align: center;
+}

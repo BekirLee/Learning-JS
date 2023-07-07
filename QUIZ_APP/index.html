@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz App</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="img/images.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="responive.css">
+</head>
+
+<body>
+    <div class="card quiz-box active ">
+
+        <div class="card-header">
+            <span class="currentQuestionCount"></span>
+            <span>/</span>
+            <span class="questionsCount"></span>
+        </div>
+        <div class="card-body">
+            <div id="quizes"></div>
+        </div>
+
+        <div class=" card-footer buttons">
+            <button class="previous btn btn-danger"><span>Previous</span></button>
+            <button class="next btn btn-primary"><span>Next</span></button>
+            <button class="result btn btn-warning"><span>Result</span></button>
+        </div>
+
+    </div>
+
+    <div class="score_box">
+        <div class="card">
+            <div class="card-body">
+                <div class="resultSide">
+                    <span>Quiz over!</span>
+                    <div class="crown">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <div class="score"></div>
+                    <button class="btn btn-primary replay">Replay</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn-start main btn btn-warning">Start</button>
+
+    <script src="ui.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
