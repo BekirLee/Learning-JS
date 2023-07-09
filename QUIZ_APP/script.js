@@ -2,7 +2,7 @@ function Question(questiontext, options, correctAnswer) {
     this.questiontext = questiontext;
     this.options = options;
     this.correctAnswer = correctAnswer;
-   
+
 }
 
 Question.prototype.checkAnswer = function (check) {
@@ -26,5 +26,15 @@ QUIZ.prototype.getQuestion = function () {
 
 const quiz = new QUIZ(questions);
 
-console.log(quiz.getQuestion());
 
+document.querySelector(".main").addEventListener("click", function () {
+
+    if (quiz.questionIndex != questions.length) {
+        console.log(quiz.getQuestion());
+        quiz.questionIndex += 1;
+    }
+    else {
+        alert('Quiz Completed');
+    }
+
+});
