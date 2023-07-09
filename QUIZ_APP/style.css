@@ -21,10 +21,13 @@
 .quiz-box.active {
     opacity: 1;
     pointer-events: all;
+
+    transform: translate(-50%, -50%)scale(1);
+
 }
 
 
-.quiz-box{
+.quiz-box {
     width: 90%;
     padding: 20px;
     opacity: 0;
@@ -96,11 +99,13 @@
     color: #155724;
     background: #d4edda;
     transition: 0.6s;
+    pointer-events: none;
 }
 
 .incorrect {
     color: #721c24;
     background: #f8d7da;
+    pointer-events: none;
     transition: 0.6s;
 }
 
