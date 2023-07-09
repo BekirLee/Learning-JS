@@ -7,12 +7,16 @@
     transform: translate(-50%, -50%);
 }
 
+.btn-start.main {
+    display: none;
+}
+
 
 .btn {
     outline: none;
     border: none;
     box-shadow: 0 3px 4px #00000032;
-    /* width: 100px; */
+
 }
 
 
@@ -24,7 +28,7 @@
     transition: all 1.8s ease;
     transform: translate(-50%, -50%)scale(1);
     border: none;
-    display: none;
+
 }
 
 .quiz-box.active {
