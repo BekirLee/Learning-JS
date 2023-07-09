@@ -7,20 +7,24 @@
     transform: translate(-50%, -50%);
 }
 
-.btn-start.main {
-    display: none;
-}
-
 
 .btn {
     outline: none;
     border: none;
     box-shadow: 0 3px 4px #00000032;
+}
 
+.disappearing {
+    display: none;
+}
+
+.quiz-box.active {
+    opacity: 1;
+    pointer-events: all;
 }
 
 
-.quiz-box {
+.quiz-box{
     width: 90%;
     padding: 20px;
     opacity: 0;
@@ -28,13 +32,9 @@
     transition: all 1.8s ease;
     transform: translate(-50%, -50%)scale(1);
     border: none;
-
+    /* display: none; */
 }
 
-.quiz-box.active {
-    opacity: 1;
-    pointer-events: all;
-}
 
 .head .title {
     margin-left: 20px;
@@ -47,21 +47,31 @@
 }
 
 .option {
+    display: flex;
+    justify-content: space-between;
     padding: 4px;
     margin-bottom: 10px;
     cursor: pointer;
     border: solid 1px rgb(32, 4, 4);
-    border-radius: 12px;
+    border-radius: 6px;
 }
 
-/* .option:hover {
+.option-list .option span {
+    margin-left: 6px;
+}
+
+.option-list .option i {
+    margin-right: 6px;
+}
+
+.option-list .option:hover {
     color: #fff;
     background-color: rgb(229, 178, 10);
-} */
+}
 
-/* .option.incorrect:hover {
-    color: #fff;
-    background-color: red;
+/* .option-list .option.incorrect:hover {
+    color: #112b2c;
+    background-color: #fff;
 } */
 
 .inner_option {

@@ -29,9 +29,11 @@ const quiz = new QUIZ(questions);
 
 document.querySelector(".main").addEventListener("click", function () {
     if (quiz.questionIndex != questions.length) {
+        document.querySelector(".quiz-box").classList.add("active");
+        document.querySelector(".main").classList.add("disappearing");
         console.log(quiz.getQuestion());
         quiz.questionIndex += 1;
-        
+
     }
     else {
         alert('Quiz Completed');
