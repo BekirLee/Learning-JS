@@ -52,8 +52,10 @@ document.querySelector(".next").addEventListener("click", function () {
 
 });
 
-function showQuestion(opinion) {
+const option_list = document.querySelector(".option-list");
 
+function showQuestion(opinion) {
+    
     let variant = `<span>${opinion.questiontext}</span>`;
     let option = '';
     for (let answers in opinion.options) {
@@ -64,28 +66,37 @@ function showQuestion(opinion) {
             </div>
         </div>
           
-
-            `;
+        
+        `;
     }
-    let option_list = document.querySelector(".option-list");
-
+    
     document.querySelector(".question_text").innerHTML = variant;
     option_list.innerHTML = option;
-
+    
     let options = option_list.querySelectorAll(".option");
-
+    
     for (let value of options) {
         value.setAttribute("onclick", "optionSelected(this)");
     }
 }
 
 function optionSelected(options) {
+
+    const correctIcon = '  <div class="icon"><i class="fas fa-check"></i></div>';
+    const incorrectIcon = '  <div class="icon"><i class="fas fa-times"></i></div>';
     let answer = options.querySelector("span b").textContent;
     let question = quiz.getQuestion();
     if (question.checkAnswer(answer)) {
-        alert('Lets go baby!');
+        options.classList.add("correct");
+        options.insertAdjacentHTML("beforeend", correctIcon);
     }
     else {
-        alert('Quiz Completed');
+        options.classList.add("incorrect");
+        options.insertAdjacentHTML("beforeend", incorrectIcon);
+        
+    }
+
+    for (i = 0; i < option_list.children.length; i++) {
+        option_list.children[i].classList.add("disabled");
     }
 }
