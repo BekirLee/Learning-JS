@@ -32,7 +32,8 @@ document.querySelector(".main").addEventListener("click", function () {
         document.querySelector(".quiz-box").classList.add("active");
         document.querySelector(".option").classList.add("smthg");
         document.querySelector(".main").classList.add("disappearing");
-        console.log(quiz.getQuestion());
+        quiz.getQuestion();
+
         quiz.questionIndex += 1;
 
     }
@@ -41,3 +42,21 @@ document.querySelector(".main").addEventListener("click", function () {
     }
 
 });
+
+function showQuestion(opinion) {
+
+    let variant = `<span>${opinion.questiontext}</span>`;
+    let option = '';
+    for (let answers in opinion.options) {
+        option += `
+            < div class="option correct" >
+        <span>${answers} :${opinion.options[answers]}</span>
+        <div class="icon"><i class="fas fa-check"></i></div>
+            </div >
+
+            `;
+    }
+    document.querySelector(".question_text").innerHTML = variant;
+    document.querySelector(".option").innerHTML = option;
+
+}
