@@ -12,7 +12,7 @@ Question.prototype.checkAnswer = function (check) {
 let questions = [
     new Question("1-What web developer should know?", { a: "Python", b: "JS", c: "Java" }, "b"),
     new Question("2- What are the newly introduced input types in HTML5?", { a: "color date , Datetime-local ,email ,month ,number range", b: " audio, video , source", c: "border-top-left-radius, border-top-right-radius, border-bottom-left-radius" }, "a"),
-    new Question("3-Why is float used in CSS?", { a: "Long polling is a development pattern that is used to emulate a data push operation from a server to a client machine.", b: "It only applies to elements that are positioned, i.e., those elements having the position attribute compulsorily.", c: "Float is a popular property in CSS to control the layout and position of an element on a web page." }, "c")
+    new Question("3-Why is float used in CSS?", { a: "JavaScript can be used to easily modify classes and styles in an element by making use of the following syntax:", b: "It only applies to elements that are positioned, i.e., those elements having the position attribute compulsorily.", c: "Float is a popular property in CSS to control the layout and position of an element on a web page." }, "c")
 ];
 
 function QUIZ(questions) {
@@ -59,15 +59,33 @@ function showQuestion(opinion) {
     for (let answers in opinion.options) {
         option +=
             `
-            <div class="option correct">
-            <span>${answers}: ${opinion.options[answers]}</span>
+            <div class="option ">
+            <span><b>${answers}</b>: ${opinion.options[answers]}</span>
             </div>
         </div>
           
 
             `;
     }
-    document.querySelector(".question_text").innerHTML = variant;
-    document.querySelector(".option-list").innerHTML = option;
+    let option_list = document.querySelector(".option-list");
 
+    document.querySelector(".question_text").innerHTML = variant;
+    option_list.innerHTML = option;
+
+    let options = option_list.querySelectorAll(".option");
+
+    for (let value of options) {
+        value.setAttribute("onclick", "optionSelected(this)");
+    }
+}
+
+function optionSelected(options) {
+    let answer = options.querySelector("span b").textContent;
+    let question = quiz.getQuestion();
+    if (question.checkAnswer(answer)) {
+        alert('Lets go baby!');
+    }
+    else {
+        alert('Quiz Completed');
+    }
 }
