@@ -10,9 +10,9 @@ Question.prototype.checkAnswer = function (check) {
 }
 
 let questions = [
-    new Question("1-What web developer should know?", { a: "What web developer should know?", b: "What web developer should know?", c: "What web developer should know?" }, "c"),
-    new Question("2-What web developer should know?", { a: "What web developer should know?", b: "What web developer should know?", c: "What web developer should know?" }, "c"),
-    new Question("3-What web developer should know?", { a: "What web developer should know?", b: "What web developer should know?", c: "What web developer should know?" }, "c")
+    new Question("1-What web developer should know?", { a: "Python", b: "JS", c: "Java" }, "b"),
+    new Question("2- What are the newly introduced input types in HTML5?", { a: "color date , Datetime-local ,email ,month ,number range", b: " audio, video , source", c: "border-top-left-radius, border-top-right-radius, border-bottom-left-radius" }, "a"),
+    new Question("3-Why is float used in CSS?", { a: "Long polling is a development pattern that is used to emulate a data push operation from a server to a client machine.", b: "It only applies to elements that are positioned, i.e., those elements having the position attribute compulsorily.", c: "Float is a popular property in CSS to control the layout and position of an element on a web page." }, "c")
 ];
 
 function QUIZ(questions) {
@@ -28,13 +28,22 @@ const quiz = new QUIZ(questions);
 
 
 document.querySelector(".main").addEventListener("click", function () {
-    if (quiz.questionIndex != questions.length) {
-        document.querySelector(".quiz-box").classList.add("active");
-        document.querySelector(".option").classList.add("smthg");
-        document.querySelector(".main").classList.add("disappearing");
-        quiz.getQuestion();
+    document.querySelector(".quiz-box").classList.add("active");
+    document.querySelector(".main").classList.add("disappearing");
+    // aşağıda olan hissəni anla
+    showQuestion(quiz.getQuestion());
 
+});
+
+document.querySelector(".next").addEventListener("click", function () {
+
+
+    if (quiz.questionIndex != questions.length + 1) {
+        document.querySelector(".quiz-box").classList.add("active");
+        document.querySelector(".main").classList.add("disappearing");
+        // aşağıda olan hissəni anla
         quiz.questionIndex += 1;
+        showQuestion(quiz.getQuestion());
 
     }
     else {
@@ -48,15 +57,17 @@ function showQuestion(opinion) {
     let variant = `<span>${opinion.questiontext}</span>`;
     let option = '';
     for (let answers in opinion.options) {
-        option += `
-            < div class="option correct" >
-        <span>${answers} :${opinion.options[answers]}</span>
-        <div class="icon"><i class="fas fa-check"></i></div>
-            </div >
+        option +=
+            `
+            <div class="option correct">
+            <span>${answers}: ${opinion.options[answers]}</span>
+            </div>
+        </div>
+          
 
             `;
     }
     document.querySelector(".question_text").innerHTML = variant;
-    document.querySelector(".option").innerHTML = option;
+    document.querySelector(".option-list").innerHTML = option;
 
 }
