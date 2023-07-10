@@ -151,9 +151,18 @@
 }
 
 .next {
+    opacity: 0;
+    pointer-events: none;
     width: 100px !important;
     height: 35px !important;
     padding: 5px !important;
+    transform: scale(1);
+    transition: all 0.9s ease;
+}
+
+.next.show {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .option.hoverable:hover:not(.selected) {

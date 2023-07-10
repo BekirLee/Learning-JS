@@ -32,7 +32,7 @@ document.querySelector(".main").addEventListener("click", function () {
     document.querySelector(".main").classList.add("disappearing");
     // aşağıda olan hissəni anla
     showQuestion(quiz.getQuestion());
-
+    document.querySelector(".next").classList.remove("show");
 });
 
 document.querySelector(".next").addEventListener("click", function () {
@@ -44,6 +44,7 @@ document.querySelector(".next").addEventListener("click", function () {
         // aşağıda olan hissəni anla
         quiz.questionIndex += 1;
         showQuestion(quiz.getQuestion());
+        document.querySelector(".next").classList.remove("show");
 
     }
     else {
@@ -55,7 +56,7 @@ document.querySelector(".next").addEventListener("click", function () {
 const option_list = document.querySelector(".option-list");
 
 function showQuestion(opinion) {
-    
+
     let variant = `<span>${opinion.questiontext}</span>`;
     let option = '';
     for (let answers in opinion.options) {
@@ -69,12 +70,12 @@ function showQuestion(opinion) {
         
         `;
     }
-    
+
     document.querySelector(".question_text").innerHTML = variant;
     option_list.innerHTML = option;
-    
+
     let options = option_list.querySelectorAll(".option");
-    
+
     for (let value of options) {
         value.setAttribute("onclick", "optionSelected(this)");
     }
@@ -93,10 +94,12 @@ function optionSelected(options) {
     else {
         options.classList.add("incorrect");
         options.insertAdjacentHTML("beforeend", incorrectIcon);
-        
+
     }
 
     for (i = 0; i < option_list.children.length; i++) {
         option_list.children[i].classList.add("disabled");
     }
+    document.querySelector(".next").classList.add("show");
+
 }
