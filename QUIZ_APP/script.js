@@ -103,3 +103,8 @@ function optionSelected(options) {
     document.querySelector(".next").classList.add("show");
 
 }
+
+function showQuestionIndex(presentQuestion, allQuestions) {
+    let tag = ` <span class="badge bg-warning">${presentQuestion}/${allQuestions}</span> `;
+
+}
