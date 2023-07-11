@@ -8,25 +8,28 @@ ui.btn_start.addEventListener("click", function () {
     ui.btn_start.classList.add("disappearing");
     // aşağıda olan hissəni anla
     showQuestion(quiz.getQuestion());
-    showQuestionNumber(quiz.questionIndex + 1, quiz.questions.length);
+    showQuestionNumber(quiz.questionIndex, quiz.questions.length);
     ui.next_btn.classList.remove("show");
 });
 
 ui.next_btn.addEventListener("click", function () {
 
 
-    if (quiz.questionIndex != questions.length + 1) {
+    if (quiz.questionIndex != questions.length) {
         ui.quiz_box.classList.add("active");
         ui.btn_start.classList.add("disappearing");
         // aşağıda olan hissəni anla
         quiz.questionIndex += 1;
         showQuestion(quiz.getQuestion());
-        showQuestionNumber(quiz.questionIndex + 1, quiz.questions.length);
+        showQuestionNumber(quiz.questionIndex, quiz.questions.length);
         ui.next_btn.classList.remove("show");
 
     }
     else {
         console.log("Quiz is over!");
+        ui.score_box.classList.add("active");
+        ui.quiz_box.classList.remove("active");
+        showResult(quiz.trueAnswer, quiz.wrongAswer, quiz.questions.length);
     }
 
 });
@@ -66,10 +69,12 @@ function optionSelected(options) {
     let answer = options.querySelector("span b").textContent;
     let question = quiz.getQuestion();
     if (question.checkAnswer(answer)) {
+        quiz.trueAnswer += 1;
         options.classList.add("correct");
         options.insertAdjacentHTML("beforeend", ui.correctIcon);
     }
     else {
+        quiz.wrongAswer += 1;
         options.classList.add("incorrect");
         options.insertAdjacentHTML("beforeend", ui.incorrectIcon);
 
@@ -85,5 +90,14 @@ function optionSelected(options) {
 function showQuestionNumber(presentQuestion, allQuestions) {
     let tag = ` <span class="badge bg-warning">${presentQuestion}/${allQuestions}</span> `;
     ui.question_count.innerHTML = tag;
+
+}
+
+function showResult(correct, wrong, allQuestions) {
+    let tag = `<div>
+            <span>${correct} true ${wrong} wrong answers from ${allQuestions} questions </span>
+            </div>
+    `;
+    ui.score.innerHTML = tag;
 
 }
