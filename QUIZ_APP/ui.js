@@ -10,6 +10,7 @@ function UI() {
         this.score_box = document.querySelector(".score_box"),
         this.score = document.querySelector(".score"),
         this.finish = document.querySelector(".quit"),
-        this.second_time = document.querySelector(".second_time")
+        this.second_time = document.querySelector(".second_time"),
+        this.time_text = document.querySelector(".time_text")
 
 }

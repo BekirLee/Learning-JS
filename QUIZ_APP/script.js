@@ -4,7 +4,7 @@ let ui = new UI();
 
 
 ui.btn_start.addEventListener("click", function () {
-    startTimer(10);
+    startTimer(5);
     ui.quiz_box.classList.add("active");
     ui.btn_start.classList.add("disappearing");
     // aşağıda olan hissəni anla
@@ -113,12 +113,24 @@ function startTimer(time) {
     counter = setInterval(timer, 1000);
 
     function timer() {
-        ui.second_time.textContent = time;
-        time--;
-    }
+        if (time >= 0) {
+            ui.second_time.textContent = time;
+            time--;
+        } else {
+            clearInterval(counter);
+            ui.time_text.textContent = "Quiz Over!";
 
-    if (time < 0) {
-        clearInterval(counter);
+            // choose correct answers itself
+            let true_answer = quiz.trueAnswer;
+            for (let option of ui.option_list.children) {
+                if (option.querySelector("span b").textContent = true_answer) {
+                    option.classList.add("correct");
+                    option.insertAdjacentHTML("beforeend", ui.correctIcon);
+                }
+                option.classList.add("disabled");
+            }
+
+        }
     }
 
 }
