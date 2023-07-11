@@ -4,7 +4,8 @@ let ui = new UI();
 
 
 ui.btn_start.addEventListener("click", function () {
-    startTimer(5);
+    startTimer(10);
+    startTimerLine();
     ui.quiz_box.classList.add("active");
     ui.btn_start.classList.add("disappearing");
     // aşağıda olan hissəni anla
@@ -21,6 +22,11 @@ ui.next_btn.addEventListener("click", function () {
         ui.btn_start.classList.add("disappearing");
         // aşağıda olan hissəni anla
         quiz.questionIndex += 1;
+        startTimer(10);
+
+        clearInterval(counterLine);
+        startTimerLine();
+
         showQuestion(quiz.getQuestion());
         showQuestionNumber(quiz.questionIndex, quiz.questions.length);
         ui.next_btn.classList.remove("show");
@@ -28,6 +34,9 @@ ui.next_btn.addEventListener("click", function () {
     }
     else {
         console.log("Quiz is over!");
+        clearInterval(counter);
+        clearInterval(counterLine);
+        startTimerLine();
         ui.score_box.classList.add("active");
         ui.quiz_box.classList.remove("active");
         showResult(quiz.trueAnswer, quiz.wrongAswer, quiz.questions.length);
@@ -49,7 +58,7 @@ function showQuestion(opinion) {
     for (let answers in opinion.options) {
         option +=
             `
-            <div class="opti    on ">
+            <div class="option ">
             <span><b>${answers}</b>: ${opinion.options[answers]}</span>
             </div>
         </div>
@@ -69,17 +78,20 @@ function showQuestion(opinion) {
 }
 
 function optionSelected(options) {
+    clearInterval(counter);
 
     // const correctIcon = '  <div class="icon"><i class="fas fa-check"></i></div>';
     // const incorrectIcon = '  <div class="icon"><i class="fas fa-times"></i></div>';
     let answer = options.querySelector("span b").textContent;
     let question = quiz.getQuestion();
     if (question.checkAnswer(answer)) {
+        clearInterval(counterLine);
         quiz.trueAnswer += 1;
         options.classList.add("correct");
         options.insertAdjacentHTML("beforeend", ui.correctIcon);
     }
     else {
+        clearInterval(counterLine);
         quiz.wrongAswer += 1;
         options.classList.add("incorrect");
         options.insertAdjacentHTML("beforeend", ui.incorrectIcon);
@@ -121,16 +133,28 @@ function startTimer(time) {
             ui.time_text.textContent = "Quiz Over!";
 
             // choose correct answers itself
-            let true_answer = quiz.trueAnswer;
+            let true_answer = quiz.getQuestion().correctAnswer;
             for (let option of ui.option_list.children) {
-                if (option.querySelector("span b").textContent = true_answer) {
+                if (option.querySelector("span b").textContent == true_answer) {
                     option.classList.add("correct");
                     option.insertAdjacentHTML("beforeend", ui.correctIcon);
                 }
                 option.classList.add("disabled");
+                ui.next_btn.classList.add("show");
             }
-
         }
     }
 
+}
+let counterLine;
+function startTimerLine() {
+    let line = 550;
+    counterLine = setInterval(timer, 20);
+    function timer() {
+        line -= 1;
+        ui.time_line.style.width = line + "px";
+        if (line < 0) {
+            clearInterval(counterLine);
+        }
+    }
 }

@@ -11,6 +11,7 @@ function UI() {
         this.score = document.querySelector(".score"),
         this.finish = document.querySelector(".quit"),
         this.second_time = document.querySelector(".second_time"),
-        this.time_text = document.querySelector(".time_text")
+        this.time_text = document.querySelector(".time_text"),
+        this.time_line = document.querySelector(".time-line")
 
 }

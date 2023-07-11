@@ -1,4 +1,3 @@
-
 function QUIZ(questions) {
     this.questions = questions;
     this.questionIndex = 1;
