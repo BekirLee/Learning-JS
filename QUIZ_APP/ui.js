@@ -8,6 +8,7 @@ function UI() {
         this.correctIcon = '  <div class="icon"><i class="fas fa-check"></i></div>',
         this.incorrectIcon = '  <div class="icon"><i class="fas fa-times"></i></div>',
         this.score_box = document.querySelector(".score_box"),
-        this.score = document.querySelector(".score")
+        this.score = document.querySelector(".score"),
+        this.finish = document.querySelector(".quit")
 
 }

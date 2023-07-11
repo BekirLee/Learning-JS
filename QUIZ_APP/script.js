@@ -34,6 +34,11 @@ ui.next_btn.addEventListener("click", function () {
 
 });
 
+ui.finish.addEventListener("click", function () {
+    ui.btn_start.classList.add("disabled");
+    window.location.reload();
+})
+
 const option_list = ui.option_list;
 
 function showQuestion(opinion) {
