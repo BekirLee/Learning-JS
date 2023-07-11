@@ -4,6 +4,7 @@ let ui = new UI();
 
 
 ui.btn_start.addEventListener("click", function () {
+    startTimer(10);
     ui.quiz_box.classList.add("active");
     ui.btn_start.classList.add("disappearing");
     // aşağıda olan hissəni anla
@@ -48,7 +49,7 @@ function showQuestion(opinion) {
     for (let answers in opinion.options) {
         option +=
             `
-            <div class="option ">
+            <div class="opti    on ">
             <span><b>${answers}</b>: ${opinion.options[answers]}</span>
             </div>
         </div>
@@ -104,5 +105,20 @@ function showResult(correct, wrong, allQuestions) {
             </div>
     `;
     ui.score.innerHTML = tag;
+
+}
+
+let counter;
+function startTimer(time) {
+    counter = setInterval(timer, 1000);
+
+    function timer() {
+        ui.second_time.textContent = time;
+        time--;
+    }
+
+    if (time < 0) {
+        clearInterval(counter);
+    }
 
 }
