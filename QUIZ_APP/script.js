@@ -1,4 +1,3 @@
-
 const quiz = new QUIZ(questions);
 let ui = new UI();
 
