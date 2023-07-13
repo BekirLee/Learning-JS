@@ -39,7 +39,7 @@ ui.next_btn.addEventListener("click", function () {
         startTimerLine();
         ui.score_box.classList.add("active");
         ui.quiz_box.classList.remove("active");
-        showResult(quiz.trueAnswer, quiz.wrongAswer, quiz.questions.length);
+        showResult(quiz.trueAnswer, quiz.wrongAswer, quiz.noneAnswer, quiz.questions.length);
     }
 
 });
@@ -111,9 +111,9 @@ function showQuestionNumber(presentQuestion, allQuestions) {
 
 }
 
-function showResult(correct, wrong, allQuestions) {
+function showResult(correct, wrong, none, allQuestions) {
     let tag = `<div>
-            <span>${correct} true ${wrong} wrong answers from ${allQuestions} questions </span>
+            <span>${correct} true ${wrong} wrong ${none} none answers from ${allQuestions} questions </span>
             </div>
     `;
     ui.score.innerHTML = tag;
@@ -131,7 +131,7 @@ function startTimer(time) {
         } else {
             clearInterval(counter);
             ui.time_text.textContent = "Quiz Over!";
-
+            quiz.noneAnswer += 1;
             // choose correct answers itself
             let true_answer = quiz.getQuestion().correctAnswer;
             for (let option of ui.option_list.children) {

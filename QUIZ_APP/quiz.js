@@ -3,6 +3,7 @@ function QUIZ(questions) {
     this.questionIndex = 1;
     this.trueAnswer = 0;
     this.wrongAswer = 0;
+    this.noneAnswer = 0;
 }
 
 QUIZ.prototype.getQuestion = function () {
