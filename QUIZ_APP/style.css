@@ -197,3 +197,7 @@
 .quit {
     margin-top: 10px;
 }
+
+.card-body {
+    width: auto;
+}

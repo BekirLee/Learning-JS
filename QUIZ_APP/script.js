@@ -113,7 +113,9 @@ function showQuestionNumber(presentQuestion, allQuestions) {
 
 function showResult(correct, wrong, none, allQuestions) {
     let tag = `<div>
-            <span>${correct} true ${wrong} wrong ${none} none answers from ${allQuestions} questions </span>
+            <span>${correct} : true answer <br></br>
+            ${wrong} : wrong answer <br></br>
+            ${none} : none answer from ${allQuestions} questions </span>
             </div>
     `;
     ui.score.innerHTML = tag;
