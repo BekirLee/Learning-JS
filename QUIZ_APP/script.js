@@ -58,7 +58,7 @@ function showQuestion(opinion) {
         option +=
             `
             <div class="option ">
-            <span><b>${answers}</b>: ${opinion.options[answers]}</span>
+            <span><b>${answers}</b>: ${opinion.options[answers]}
             </div>
         </div>
           
