@@ -56,7 +56,7 @@ function showQuestion(opinion) {
     let option = '';
     for (let answers in opinion.options) {
         option +=
-            `
+            `   
             <div class="option ">
             <span><b>${answers}</b>: ${opinion.options[answers]}
             </div>
